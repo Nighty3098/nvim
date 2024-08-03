@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme nightfly")
+vim.cmd("colorscheme onenord")
 
 -- nightfly
 -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon, 
