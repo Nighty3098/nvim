@@ -1,7 +1,7 @@
 <div align="center">
     <h1>My nvim currently setup</h1>
     <br><br>
-    <img src="img/header.png" width="70%"/>
+    <img src="img/header.png" width="100%"/>
     <br><br>
     <details>
     <summary>Images</summary>
