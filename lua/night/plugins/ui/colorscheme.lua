@@ -37,10 +37,6 @@ return {
   },
 
   {
-    "wojciechkepka/vim-github-dark",
-  },
-
-  {
     "craftzdog/solarized-osaka.nvim",
   },
 }
