@@ -55,6 +55,7 @@ return {
                 gitsigns = true,
                 neotree = false,
                 treesitter = true,
+                zenmode = false,
                 notify = false,
                 mini = {
                     enabled = true,

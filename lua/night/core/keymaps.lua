@@ -36,6 +36,9 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- Plugin Keybinds
 ----------------------
 
+-- zen mode
+keymap.set("n", "<leader>zm", ":ZenMode<CR>")
+
 keymap.set("n", "<A-1>", ":BufferGoto 1<CR>")
 keymap.set("n", "<A-2>", ":BufferGoto 2<CR>")
 keymap.set("n", "<A-3>", ":BufferGoto 3<CR>")
