@@ -3,6 +3,7 @@
     <br><br>
     <img src="img/header.png" width="100%"/>
     <br><br>
+    Here's my nvim setup with AI autocomplete, lsp, handy keyboard shortcuts and good performance
     <details>
     <summary>Images</summary>
     <img src="img/1.png" width="70%"/>
