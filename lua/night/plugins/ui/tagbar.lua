@@ -1,4 +1,4 @@
 return {
-  "preservim/tagbar",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+    "preservim/tagbar",
+    dependencies = {"nvim-tree/nvim-web-devicons"}
 }
