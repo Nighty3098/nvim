@@ -35,6 +35,19 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 ----------------------
 -- Plugin Keybinds
 ----------------------
+keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
 -- zen mode
 keymap.set("n", "<leader>zm", ":ZenMode<CR>")
