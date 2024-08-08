@@ -25,7 +25,22 @@ return {
                             ellipsis_char = "...",
                             symbol_map = {Codeium = ""}
                         }
-                    )
+                    ),
+                    fields = { "kind", "abbr", "menu" },
+                    max_width = 0,
+                    source_names = {
+                        nvim_lsp = "(LSP)",
+                        emoji = "(Emoji)",
+                        path = "(Path)",
+                        calc = "(Calc)",
+                        cmp_tabnine = "(Tabnine)",
+                        vsnip = "(Snippet)",
+                        luasnip = "(Snippet)",
+                        buffer = "(Buffer)",
+                        tmux = "(TMUX)",
+                        copilot = "(Copilot)",
+                        treesitter = "(TreeSitter)",
+                    }
                 },
                 window = {
                     completion = cmp.config.window.bordered(),
@@ -43,10 +58,10 @@ return {
                     {
                         {name = "nvim_lsp"},
                         {name = "codeium"},
-                        {name = "vsnip"} -- For vsnip users.
+                        {name = "vsnip"}, -- For vsnip users.
                         -- { name = 'luasnip' }, -- For luasnip users.
-                        -- { name = 'ultisnips' }, -- For ultisnips users.
-                        -- { name = 'snippy' }, -- For snippy users.
+                        { name = 'ultisnips' }, -- For ultisnips users.
+                        { name = 'snippy' }, -- For snippy users.
                     },
                     {
                         {name = "buffer"}
