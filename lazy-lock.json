@@ -13,6 +13,7 @@
   "conform.nvim": { "branch": "master", "commit": "eff40c4f5fdf7ae8f269b258047d1bd7cee50f02" },
   "dressing.nvim": { "branch": "master", "commit": "6741f1062d3dc6e4755367a7e9b347b553623f04" },
   "git.nvim": { "branch": "main", "commit": "164daed4eff61bd6bee6f1c97cb78144b9374022" },
+  "github-nvim-theme": { "branch": "main", "commit": "6b461635230ccb5d0037f378fbe05a27c4ccf7cd" },
   "gitsigns.nvim": { "branch": "main", "commit": "58bd9e98d8e3c5a1c98af312e85247ee1afd3ed2" },
   "gruvbox.nvim": { "branch": "main", "commit": "7a1b23e4edf73a39642e77508ee6b9cbb8c60f9e" },
   "image.nvim": { "branch": "master", "commit": "4007cddc4cfc1b5ddd49744a38362e7b0432b3a0" },
@@ -31,6 +32,7 @@
   "mini.nvim": { "branch": "main", "commit": "d8faae693d266ee4f3a2bf1fb7ca4bc81314c3e9" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "29f7c215332ba95e470811c380ddbce2cebe2af4" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
+  "neofusion.nvim": { "branch": "main", "commit": "c0fc7b41057fbb69dd9ff6fd2d913b1f532effac" },
   "neogen": { "branch": "main", "commit": "4b22542b96712a5a901fa909b7dc749251ae1625" },
   "neovim": { "branch": "main", "commit": "1e45cea06db866143930a6df96fc66bf715c866c" },
   "neovim-ayu": { "branch": "master", "commit": "6993189dd0ee38299879a1a0064718a8392e8713" },
@@ -65,10 +67,12 @@
   "vim-ReplaceWithRegister": { "branch": "master", "commit": "aad1e8fa31cb4722f20fe40679caa56e25120032" },
   "vim-clang-format": { "branch": "master", "commit": "6b791825ff478061ad1c57b21bb1ed5a5fd0eb29" },
   "vim-cpp-modern": { "branch": "master", "commit": "6916d2a08c736f806a33cba7752a449ef530549e" },
+  "vim-jsx-pretty": { "branch": "master", "commit": "6989f1663cc03d7da72b5ef1c03f87e6ddb70b41" },
   "vim-moonfly-colors": { "branch": "master", "commit": "4f7d18cb471ede7407dd966c7563868cae7f4f99" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "19efaf31cbe15a429cb3ca6ac9c9fce13275045b" },
   "vim-visual-multi": { "branch": "master", "commit": "38b0e8d94a5499ccc17d6159763d32c79f53417b" },
   "vim-wakatime": { "branch": "master", "commit": "53bba6bb8342de9cbdafc82142a9b5e82008d858" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
+  "yorumi.nvim": { "branch": "main", "commit": "3752df9f9460ac8410b4b2b29ebee1da1c5bb1cf" },
   "zen-mode.nvim": { "branch": "main", "commit": "29b292bdc58b76a6c8f294c961a8bf92c5a6ebd6" }
 }

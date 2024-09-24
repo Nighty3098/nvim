@@ -6,5 +6,6 @@ return {
     "wakatime/vim-wakatime",
     "rhysd/vim-clang-format",
     "bfrg/vim-cpp-modern",
-    "danymat/neogen"
+    "maxmellon/vim-jsx-pretty",
+    "danymat/neogen",
 }

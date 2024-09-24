@@ -1,8 +1,10 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme yorumi")
 
+-- yorumi
+-- neofusion
 -- rose-pine rose-pine-main rose-pine-moon rose-pine-dawn
 -- nightfly
 -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon,
