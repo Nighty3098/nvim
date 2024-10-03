@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme yorumi")
+vim.cmd("colorscheme catppuccin-macchiato")
 
 -- yorumi
 -- neofusion
