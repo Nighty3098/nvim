@@ -1,8 +1,9 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme catppuccin-macchiato")
+vim.cmd("colorscheme ayu")
 
+-- wal
 -- yorumi
 -- neofusion
 -- rose-pine rose-pine-main rose-pine-moon rose-pine-dawn
