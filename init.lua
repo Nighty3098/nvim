@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme ayu")
+vim.cmd("colorscheme kanagawa")
 
 -- wal
 -- yorumi
