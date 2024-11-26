@@ -15,6 +15,7 @@ return {
     {
         "yorumicolors/yorumi.nvim",
     },
+    { "neanias/everforest-nvim" },
     {
         "catppuccin/nvim",
         config = function()

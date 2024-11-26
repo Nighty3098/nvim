@@ -3,6 +3,7 @@ require("night.lazy")
 
 vim.cmd("colorscheme catppuccin-macchiato")
 
+-- everforest
 -- tokyonight-night tokyonight-storm tokyonight-day tokyonight-moon
 -- wal
 -- yorumi
