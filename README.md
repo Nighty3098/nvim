@@ -2,7 +2,7 @@
     <h1>My nvim currently setup</h1>
     <h4>Here's my nvim setup with AI autocomplete, lsp, handy keyboard shortcuts and good performance</h4>
     <br><br>
-    <img src="https://github.com/user-attachments/assets/5ef7f84e-c34b-4e83-9e20-7c72aebc1658" />
+    <img src="img/1.png" />
     <br><br>
     <img class="badge" src="https://img.shields.io/github/last-commit/Nighty3098/nvim?style=for-the-badge&color=7dc4e4&logoColor=D9E0EE&labelColor=1c1c29" style="border-radius: 5px;"/>
     <img class="badge" src="https://img.shields.io/github/issues/Nighty3098/nvim?style=for-the-badge&color=dbb6ed&logoColor=ffffff&labelColor=1c1c29"  style="border-radius: 5px;"/>
