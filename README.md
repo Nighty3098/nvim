@@ -13,5 +13,8 @@
     <a href = "https://github.com/Nighty3098/nvim/graphs/contributors">
         <img src = "https://contrib.rocks/image?repo=Nighty3098/nvim"/>
     </a>
-    <img src="https://github.com/user-attachments/assets/78f29b8a-2f87-4d38-9478-cf45ae61ea7e" />
+    <img src="img/1.png" />
+    <img src="img/2.png" />
+    <img src="img/3.png" />
+    <img src="img/4.png" />
 </div>
