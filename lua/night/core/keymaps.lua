@@ -101,14 +101,10 @@ keymap.set("n", "<leader>hm", "<cmd>lua require('harpoon.mark').add_file()<cr>",
 keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Go to next harpoon mark" })
 keymap.set("n", "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { desc = "Go to previous harpoon mark" })
 
+keymap.set("n", "<leader>cc", ":Themery<CR>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<C-t>", function()
     require("menu").open("default")
 end, {})
 
--- mouse users + nvimtree users!
-vim.keymap.set("n", "<RightMouse>", function()
-    vim.cmd.exec('"normal! \\<RightMouse>"')
-
-    local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
-    require("menu").open(options, { mouse = true })
-end, {})
+keymap.set("n", "<leader>ch", ":lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic" })

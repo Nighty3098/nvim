@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme catppuccin-macchiato")
+vim.cmd("colorscheme kanagawa")
 
 -- everforest
 -- tokyonight-night tokyonight-storm tokyonight-day tokyonight-moon

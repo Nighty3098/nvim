@@ -6,16 +6,38 @@ return {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
         "3rd/image.nvim",
+        {
+            "s1n7ax/nvim-window-picker",
+            version = "2.*",
+            config = function()
+                require("window-picker").setup({
+                    filter_rules = {
+                        include_current_win = false,
+                        autoselect_one = true,
+                        -- filter using buffer options
+                        bo = {
+                            -- if the file type is one of following, the window will be ignored
+                            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+                            -- if the buffer type is one of following, the window will be ignored
+                            buftype = { "terminal", "quickfix" },
+                        },
+                    },
+                })
+            end,
+        },
     },
     config = function()
         require("neo-tree").setup({
+            container = {
+                enable_character_fade = true,
+            },
             source_selector = {
                 winbar = false,
                 statusline = false,
             },
             popup_border_style = "rounded",
-            enable_git_status = false,
-            enable_diagnostics = true,
+            enable_git_status = true,
+            enable_diagnostics = false,
             icon = {
                 folder_closed = "",
                 folder_open = "",
@@ -53,6 +75,14 @@ return {
                 expander_collapsed = "",
                 expander_expanded = "",
                 expander_highlight = "NeoTreeExpander",
+            },
+            window = {
+                position = "right",
+                width = 30,
+                mapping_options = {
+                    noremap = true,
+                    nowait = true,
+                },
             },
         })
     end,
