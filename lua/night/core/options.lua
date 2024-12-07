@@ -1,7 +1,8 @@
 local opt = vim.opt -- for conciseness
 
-vim.diagnostic.config({ virtual_text = false })
-vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.CRIT } })
+vim.diagnostic.enable(false)
+-- vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.CRIT } })
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
@@ -46,4 +47,3 @@ opt.swapfile = false
 
 -- fix bug with lualine
 opt.laststatus = 3
-
