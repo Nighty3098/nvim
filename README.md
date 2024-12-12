@@ -24,11 +24,19 @@ git clone https://github.com/Nighty3098/nvim ~/.config/nvim
 
 </div>
 <br><br><br>
-<details>
-<summary>IMGS</summary>
+
+
+### **`💵 Support me`**
+<img src="https://github.com/Nighty3098/CodeKeeper/blob/main/imgs/toncoin.png?raw=true" width="45px"/>
+<br>
+
+***`UQCF-sPDO0QqkNtvy5CKSvYWEsZS6l7vzaytV36oYM0SNhKt`***
+
+<br><br><br>
+
 <img src="img/1.png" />
 <img src="img/2.png" />
 <img src="img/3.png" />
 <img src="img/4.png" />
-</details>
+
 </div>
