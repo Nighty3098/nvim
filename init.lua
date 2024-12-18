@@ -1,7 +1,9 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme onenord")
+vim.cmd("hi NvimTreeNormal guibg=NONE")
+vim.cmd("hi BufferTabpageFill guibg=nil")
 
 -- everforest
 -- tokyonight-night tokyonight-storm tokyonight-day tokyonight-moon

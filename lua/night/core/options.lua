@@ -1,5 +1,14 @@
 local opt = vim.opt -- for conciseness
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+vim.opt.fillchars:append({ eob = " " })
+
+vim.diagnostic.config({
+    float = { border = "rounded" },
+})
+
 vim.diagnostic.enable(false)
 -- vim.diagnostic.config({ virtual_text = false })
 -- vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.CRIT } })

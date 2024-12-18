@@ -67,10 +67,13 @@ keymap.set("n", "<A-0>", ":BufferGoto 0<CR>")
 keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- FOR NEO TREE
-keymap.set("n", "<leader>e", ":Neotree left<CR>") -- toggle file explorer
-keymap.set("n", "<leader>ef", ":Neotree float<CR>")
-keymap.set("n", "<leader>ec", ":Neotree close<CR>")
-keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>")
+--keymap.set("n", "<leader>e", ":Neotree left<CR>") -- toggle file explorer
+--keymap.set("n", "<leader>ef", ":Neotree float<CR>")
+--keymap.set("n", "<leader>ec", ":Neotree close<CR>")
+--keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>")
+
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>")
 
 -- tagbar
 keymap.set("n", "<leader>t", ":TagbarToggle<CR>")

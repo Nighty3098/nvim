@@ -13,7 +13,6 @@ return {
         lualine.setup({
             options = {
                 theme = auto,
-                innerbg = nil,
                 component_separators = "",
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = { "alpha" },
