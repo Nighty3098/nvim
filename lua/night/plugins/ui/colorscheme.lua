@@ -15,7 +15,13 @@ return {
     {
         "yorumicolors/yorumi.nvim",
     },
-    { "neanias/everforest-nvim" },
+    {
+        "sainnhe/everforest",
+        config = function()
+            vim.g.everforest_enable_italic = true
+            vim.g.everforest_background = "soft"
+        end,
+    },
     {
         "catppuccin/nvim",
         config = function()

@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme onenord")
+vim.cmd("colorscheme everforest")
 vim.cmd("hi NvimTreeNormal guibg=NONE")
 vim.cmd("hi BufferTabpageFill guibg=nil")
 
