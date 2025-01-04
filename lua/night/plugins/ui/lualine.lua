@@ -1,5 +1,5 @@
 return {
-    "nvim-lualine/lualine.nvim",
+    "hoob3rt/lualine.nvim",
     event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
@@ -10,9 +10,13 @@ return {
     config = function()
         vim.opt.laststatus = 3
         local lualine = require("lualine")
+
+        local custom_theme = require("lualine.themes.auto")
+        custom_theme.normal.c.bg = "NONE" -- Прозрачный фон для секции C
+
         lualine.setup({
             options = {
-                theme = auto,
+                theme = custom_theme,
                 component_separators = "",
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = { "alpha" },
@@ -23,12 +27,10 @@ return {
                 },
                 lualine_b = {
                     "branch",
-                    "diff",
-                    "diagnostics",
                 },
-                lualine_c = { "" },
-                lualine_x = { "" },
-                lualine_y = { "" },
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = { "diagnostics", "diff" },
                 lualine_z = {
                     { "filename", separator = { right = "", left = "" }, left_padding = 2 },
                 },

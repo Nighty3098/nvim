@@ -5,6 +5,8 @@ vim.cmd("colorscheme nord")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
 vim.cmd("hi BufferTabpageFill guibg=nil")
+vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
+vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
 
 -- everforest
 -- rose-pine rose-pine-main rose-pine-moon rose-pine-dawn
