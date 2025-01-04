@@ -13,9 +13,6 @@ return {
         "folke/tokyonight.nvim",
     },
     {
-        "yorumicolors/yorumi.nvim",
-    },
-    {
         "sainnhe/everforest",
         config = function()
             vim.g.everforest_enable_italic = true
@@ -85,10 +82,7 @@ return {
         "ellisonleao/gruvbox.nvim",
     },
     {
-        "bluz71/vim-moonfly-colors",
-    },
-    {
-        "rmehri01/onenord.nvim",
+        "shaunsingh/nord.nvim",
     },
     {
         "Shatur/neovim-ayu",
@@ -99,9 +93,4 @@ return {
     {
         "rose-pine/neovim",
     },
-    { "dylanaraps/wal.vim" },
-    {
-        "projekt0n/github-nvim-theme",
-    },
-    { "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = ... },
 }

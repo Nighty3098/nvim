@@ -67,13 +67,13 @@ keymap.set("n", "<A-0>", ":BufferGoto 0<CR>")
 keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- FOR NEO TREE
---keymap.set("n", "<leader>e", ":Neotree left<CR>") -- toggle file explorer
---keymap.set("n", "<leader>ef", ":Neotree float<CR>")
---keymap.set("n", "<leader>ec", ":Neotree close<CR>")
---keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>")
+keymap.set("n", "<leader>e", ":Neotree left<CR>") -- toggle file explorer
+keymap.set("n", "<leader>ef", ":Neotree float<CR>")
+keymap.set("n", "<leader>ec", ":Neotree close<CR>")
+keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>")
 
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>")
+-- keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>")
 
 -- tagbar
 keymap.set("n", "<leader>t", ":TagbarToggle<CR>")
@@ -106,8 +106,19 @@ keymap.set("n", "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", {
 
 keymap.set("n", "<leader>cc", ":Themery<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<C-t>", function()
-    require("menu").open("default")
-end, {})
+keymap.set("n", "<C-.>", "w", opts) -- moving forward
+keymap.set("n", "<C-,>", "b", opts) -- moving backward
+
+keymap.set("n", "<Home>", "0", opts) -- start of line
+keymap.set("n", "<End>", "$", opts) -- end of line
+
+keymap.set("n", "<C-a>", "ggVG", opts) -- select all
+
+keymap.set("v", "<C-c>", '"*y', opts) -- copy on visual mode
+keymap.set("n", "<C-y>", 'ggVG"*y', opts) -- copy all
+
+keymap.set("i", "<C-v>", "<C-r>*", opts) -- paste on insert mode
+keymap.set("n", "<C-S-v>", '"*P', opts) -- paste after cursor
+keymap.set("n", "<C-v>", '"*p', opts) -- paste before cursor
 
 keymap.set("n", "<leader>ch", ":lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic" })
