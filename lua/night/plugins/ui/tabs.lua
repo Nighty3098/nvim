@@ -5,11 +5,11 @@ return {
         vim.g.barbar_auto_setup =
             false, require("barbar").setup({
                 animation = true,
-                auto_hide = false,
+                auto_hide = true,
                 clickable = true,
-                highlight_alternate = false,
-                separator_at_end = false,
-                separator = { left = " ", right = " " },
+                highlight_alternate = true,
+                separator_at_end = true,
+                separator = { left = " ", right = "" },
             })
     end,
 }
