@@ -23,16 +23,18 @@ return {
             },
             sections = {
                 lualine_a = {
-                    { "mode", separator = { left = "", right = "" }, right_padding = 2 },
+                    -- { "mode", separator = { left = "", right = "" }, right_padding = 2 },
                 },
-                lualine_b = {
+                lualine_b = {},
+                lualine_c = {
+                    "mode",
                     "branch",
+                    "diff",
                 },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = { "diagnostics", "diff" },
+                lualine_x = { "diagnostics", "filetype" },
+                lualine_y = {},
                 lualine_z = {
-                    { "filename", separator = { right = "", left = "" }, left_padding = 2 },
+                    -- { "filename", separator = { right = "", left = "" }, left_padding = 2 },
                 },
             },
             extensions = { "nvim-tree", "fzf" },

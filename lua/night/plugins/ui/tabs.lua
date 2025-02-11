@@ -7,9 +7,9 @@ return {
                 animation = true,
                 auto_hide = true,
                 clickable = true,
-                highlight_alternate = true,
-                separator_at_end = true,
-                separator = { left = " ", right = "" },
+                highlight_alternate = false,
+                separator_at_end = false,
+                -- separator = { left = "", right = "" },
             })
     end,
 }
