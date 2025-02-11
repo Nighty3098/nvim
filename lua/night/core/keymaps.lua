@@ -52,16 +52,16 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp
 -- zen mode
 keymap.set("n", "<leader>zm", ":ZenMode<CR>")
 
-keymap.set("n", "<A-1>", ":BufferGoto 1<CR>")
-keymap.set("n", "<A-2>", ":BufferGoto 2<CR>")
-keymap.set("n", "<A-3>", ":BufferGoto 3<CR>")
-keymap.set("n", "<A-4>", ":BufferGoto 4<CR>")
-keymap.set("n", "<A-5>", ":BufferGoto 5<CR>")
-keymap.set("n", "<A-6>", ":BufferGoto 6<CR>")
-keymap.set("n", "<A-7>", ":BufferGoto 7<CR>")
-keymap.set("n", "<A-8>", ":BufferGoto 8<CR>")
-keymap.set("n", "<A-9>", ":BufferGoto 9<CR>")
-keymap.set("n", "<A-0>", ":BufferGoto 0<CR>")
+keymap.set("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>")
+keymap.set("n", "<A-2>", ":BufferLineGoToBuffer 2<CR>")
+keymap.set("n", "<A-3>", ":BufferLineGoToBuffer 3<CR>")
+keymap.set("n", "<A-4>", ":BufferLineGoToBuffer 4<CR>")
+keymap.set("n", "<A-5>", ":BufferLineGoToBuffer 5<CR>")
+keymap.set("n", "<A-6>", ":BufferLineGoToBuffer 6<CR>")
+keymap.set("n", "<A-7>", ":BufferLineGoToBuffer 7<CR>")
+keymap.set("n", "<A-8>", ":BufferLineGoToBuffer 8<CR>")
+keymap.set("n", "<A-9>", ":BufferLineGoToBuffer 9<CR>")
+keymap.set("n", "<A-0>", ":BufferLineGoToBuffer 0<CR>")
 
 -- vim-maximizer
 keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>") -- toggle split window maximization

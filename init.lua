@@ -1,9 +1,10 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme tokyonight-night")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
+vim.cmd("hi NeoTreeNormalNC guibg=nil")
 vim.cmd("hi BufferTabpageFill guibg=nil")
 vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
 vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
