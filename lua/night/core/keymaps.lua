@@ -106,8 +106,10 @@ keymap.set("n", "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", {
 
 keymap.set("n", "<leader>cc", ":Themery<CR>", { noremap = true, silent = true })
 
-keymap.set("n", "<C-.>", "w", opts) -- moving forward
-keymap.set("n", "<C-,>", "b", opts) -- moving backward
+keymap.set("n", "<leader>dd", "dd")
+
+keymap.set("n", "<C-w>", "w", opts) -- moving forward
+keymap.set("n", "<C-b>", "b", opts) -- moving backward
 
 keymap.set("n", "<Home>", "0", opts) -- start of line
 keymap.set("n", "<End>", "$", opts) -- end of line
