@@ -3,11 +3,15 @@ local opt = vim.opt -- for conciseness
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
+vim.opt.clipboard = "unnamedplus"
+
 vim.opt.fillchars:append({ eob = " " })
 
 vim.diagnostic.config({
     float = { border = "rounded" },
 })
+
+opt.undofile = true -- Enable undo file
 
 vim.diagnostic.enable(false)
 -- vim.diagnostic.config({ virtual_text = false })
@@ -34,6 +38,9 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
+opt.scrolloff = 10
+opt.sidescrolloff = 10
+
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)

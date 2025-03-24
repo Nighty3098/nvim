@@ -11,10 +11,9 @@ return {
         bufferline.setup({
             highlights = {
                 fill = { bg = "NONE" },
-                background = {},
-                close_button = {},
-                offset_separator = {},
-                -- selected
+                background = { bg = "NONE" },
+                close_button = { bg = "NONE" },
+                offset_separator = { bg = "NONE" },
                 buffer_selected = {
                     bold = true,
                     italic = true,
