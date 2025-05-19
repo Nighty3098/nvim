@@ -9,6 +9,8 @@ vim.cmd("hi BufferTabpageFill guibg=nil")
 vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
 vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
 
+-- vague
+-- everblush
 -- everforest
 -- rose-pine rose-pine-main rose-pine-moon rose-pine-dawn
 -- nightfly

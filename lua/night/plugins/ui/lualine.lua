@@ -31,7 +31,7 @@ return {
                     "branch",
                     "diff",
                 },
-                lualine_x = { "filename", "diagnostics", "filetype" },
+                lualine_x = { "diagnostics", "filetype" },
                 lualine_y = {},
                 lualine_z = {
                     -- { "filename", separator = { right = "", left = "" }, left_padding = 2 },

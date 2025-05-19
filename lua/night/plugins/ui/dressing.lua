@@ -62,7 +62,9 @@ return {
                 -- Options for telescope selector
                 -- These are passed into the telescope picker directly. Can be used like:
                 -- telescope = require('telescope.themes').get_ivy({...})
-                telescope = nil,
+                telescope = {
+                    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+                },
                 -- Options for fzf selector
                 fzf = {
                     window = {
@@ -74,12 +76,11 @@ return {
                 fzf_lua = {},
                 -- Options for nui Menu
                 nui = {
+                    border = Nil,
+                    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
                     position = "50%",
                     size = nil,
                     relative = "editor",
-                    border = {
-                        style = "rounded",
-                    },
                     buf_options = {
                         swapfile = false,
                         filetype = "DressingSelect",
@@ -94,10 +95,9 @@ return {
                 },
                 -- Options for built-in selector
                 builtin = {
+                    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
                     -- Display numbers for options and set up keymaps
                     show_numbers = false,
-                    -- These are passed to nvim_open_win
-                    border = "rounded",
                     -- 'editor' and 'win' will default to being centered
                     relative = "editor",
                     buf_options = {},

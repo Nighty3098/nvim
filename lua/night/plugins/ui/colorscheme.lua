@@ -1,4 +1,7 @@
 return {
+    { "vague2k/vague.nvim" },
+    { "morhetz/gruvbox" },
+    { "Everblush/nvim", name = "everblush" },
     {
         "bluz71/vim-nightfly-guicolors",
         priority = 1000,
@@ -77,9 +80,6 @@ return {
     },
     {
         "rebelot/kanagawa.nvim",
-    },
-    {
-        "ellisonleao/gruvbox.nvim",
     },
     {
         "shaunsingh/nord.nvim",
