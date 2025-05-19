@@ -9,11 +9,75 @@ return {
 
             math.randomseed(os.time())
 
-            dashboard.section.header.val = {""}
+            local logo = {
+                {
+                    " .              +   .                .   . .     .  .",
+                    "                   .                    .       .     *",
+                    "  .       *                        . . . .  .   .  + .",
+                    "             You Are Here             .   .  +  . . .",
+                    ".                 |             .  .   .    .    . .",
+                    "                  |           .     .     . +.    +  .",
+                    "                  |             .       .   . .",
+                    "        . .       V          .    * . . .  .  +   .",
+                    "           +      .           .   .      +",
+                    "                            .       . +  .+. .",
+                    "  .                      .     . + .  . .     .      .",
+                    "                    .     .    .  +   . .  *  .       . ",
+                    "                    . + .  .  .  .. +  .",
+                    "     .      .  .  .  *   .  *  . +..  .            *",
+                    "      .      .   . .   .   .   . .  +   .    .            +",
+                },
+
+                {
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⠤⠤⠤⠤⠤⠤⣀⡀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⢀⣠⢤⡶⠞⠋⠉⠀⣀⣀⣀⣀⣀⣀⣀⠀⠉⠲⡀⠀",
+                    "⠀⠀⠀⠀⣀⠴⢊⡥⠚⠁⣀⠤⠖⠊⠉⠀⠀⠀⠀⠈⢧⡸⡀⠀⠀⢹⠀",
+                    "⠀⢀⡴⠊⣡⠖⠁⢀⠴⠊⣁⣀⡠⠔⠒⠊⠉⠉⠓⢦⠀⠀⢱⠀⠀⢀⡇",
+                    "⡴⠋⢀⠞⠁⢀⠔⠁⢀⡼⠤⠇⣀⡤⠤⠤⡀⠀⠀⢸⠀⠀⡸⠀⠀⡸⠀",
+                    "⠀⣰⠃⠀⡰⠃⠀⡴⠋⠀⡠⠊⠁⠀⠀⣠⠇⠀⢠⠎⠀⢠⠋⠀⣰⠃⠀",
+                    "⣰⠃⢠⡚⡗⠀⡜⠀⠀⢸⡀⠀⣀⣼⣹⠁⢀⠔⠁⢀⡴⠃⢀⡴⠁⠀⠀",
+                    "⡇⠀⠀⡏⠁⠀⣇⠀⠀⠀⠈⠉⠀⣀⠤⠚⠁⢀⡤⠋⠀⡠⠊⣠⠞⠀⠀",
+                    "⡇⠀⠀⢻⡀⠀⠈⠓⠲⠖⠒⠚⠉⠀⢰⡋⢙⠏⢀⡤⢊⡠⠚⠁⠀⠀⠀",
+                    "⢳⡀⠀⠀⠙⠲⠤⠄⠀⠠⠤⠤⠒⠊⠁⣉⣭⣚⡥⠒⠉⠀⠀⠀⠀⠀⠀",
+                    "⠀⠙⡞⠉⣆⠀⠀⠀⠀⢀⣀⡤⠤⠶⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠉⠚⠁⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                },
+
+                {
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⢠⢀⡐⢄⢢⡐⢢⢁⠂⠄⠠⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⡄⣌⠰⣘⣆⢧⡜⣮⣱⣎⠷⣌⡞⣌⡒⠤⣈⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠒⠊⠀⠀⠀⠀⢀⠢⠱⡜⣞⣳⠝⣘⣭⣼⣾⣷⣶⣶⣮⣬⣥⣙⠲⢡⢂⠡⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⢀⠢⣑⢣⠝⣪⣵⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣯⣻⢦⣍⠢⢅⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢆⡱⠌⣡⢞⣵⣿⣿⣿⠿⠛⠛⠉⠉⠛⠛⠿⢷⣽⣻⣦⣎⢳⣌⠆⡱⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠂⠠⠌⢢⢃⡾⣱⣿⢿⡾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣏⠻⣷⣬⡳⣤⡂⠜⢠⡀⣀⠀⠀⡀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢀⠂⣌⢃⡾⢡⣿⢣⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⡊⣿⣿⣾⣽⣛⠶⣶⣬⣭⣥⣙⣚⢷⣶⠦⡤⢀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢁⠂⠰⡌⡼⠡⣼⢃⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⠿⣛⣯⡴⢏⠳⠁⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠠⠑⡌⠀⣉⣾⣩⣼⣿⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⣤⣤⣿⣿⣿⣿⡿⢛⣛⣯⣭⠶⣞⠻⣉⠒⠀⠂⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⢀⣀⡶⢝⣢⣾⣿⣼⣿⣿⣿⣿⣿⣀⣼⣀⣀⣀⣤⣴⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⠿⡛⠏⠍⠂⠁⢠⠁⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠠⢀⢥⣰⣾⣿⣯⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣽⠟⣿⠐⠨⠑⡀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⡐⢢⣟⣾⣿⣿⣟⣛⣿⣿⣿⣿⢿⣝⠻⠿⢿⣯⣛⢿⣿⣿⣿⡛⠻⠿⣛⠻⠛⡛⠩⢁⣴⡾⢃⣾⠇⢀⠡⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠈⠁⠊⠙⠉⠩⠌⠉⠢⠉⠐⠈⠂⠈⠁⠉⠂⠐⠉⣻⣷⣭⠛⠿⣶⣦⣤⣤⣴⣴⡾⠟⣫⣾⣿⡏⠀⠂⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢻⢿⢶⣤⣬⣉⣉⣭⣤⣴⣿⣿⡿⠃⠄⡈⠁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠘⢊⠳⠭⡽⣿⠿⠿⠟⠛⠉⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠁⠈⠐⠀⠘⠀⠈⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                },
+            }
+
+            local function pick_color()
+                local colors = {"String", "Identifier", "Keyword", "Number"}
+                return colors[math.random(#colors)]
+            end
+
+            local function getRandomBanner()
+                local randomIndex = math.random(1, #logo)
+                return logo[randomIndex]
+            end
+            dashboard.section.header.val = getRandomBanner()
+            dashboard.section.header.opts.hl = pick_color()
 
             dashboard.section.buttons.val = {
                 dashboard.button("gc", "   Git commits", "<cmd>:Telescope git_commits<cr>"),
-                dashboard.button("gb", "   Git branches", "<cmd>:Telescope git_branches<cr>"),
+                dashboard.button("gO", "   Git branches", "<cmd>:Telescope git_branches<cr>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
                 button.opts.hl = "Comment"
@@ -47,6 +111,7 @@ return {
                 callback = function()
                     local current_hour = tonumber(os.date("%H"))
                     local greeting
+                    local greeting_2
 
                     if current_hour < 5 then
                         greeting = "    Good night!"
@@ -59,6 +124,11 @@ return {
                     else
                         greeting = "  󰖔  Good night!"
                     end
+
+                    local stats = require("lazy").stats()
+                    local ms = math.floor(stats.startuptime * 100) / 100
+
+                    local fg_color = tostring(math.random(0, 12))
 
                     dashboard.section.footer.val = greeting
 
