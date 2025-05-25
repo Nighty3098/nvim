@@ -11,6 +11,31 @@ vim.diagnostic.config({
     float = { border = "rounded" },
 })
 
+vim.diagnostic.config({
+    virtual_text = {
+        enabled = true,
+        prefix = function(diagnostic)
+            if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                return "🭰× "
+            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+                return "🭰▲ "
+            else
+                return "🭰• "
+            end
+        end,
+        suffix = "🭵",
+    },
+    underline = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ×",
+            [vim.diagnostic.severity.WARN] = " ▲",
+            [vim.diagnostic.severity.HINT] = " •",
+            [vim.diagnostic.severity.INFO] = " •",
+        },
+    },
+})
+
 opt.undofile = true -- Enable undo file
 
 vim.diagnostic.enable(false)
@@ -40,7 +65,6 @@ opt.cursorline = true -- highlight the current cursor line
 -- appearance
 opt.scrolloff = 10
 opt.sidescrolloff = 10
-
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
