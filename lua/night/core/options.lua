@@ -5,7 +5,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.fillchars:append({ eob = " " })
+vim.opt.fillchars =
+    { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " }, -- make EndOfBuffer invisible
+    vim.opt.fillchars:append({ eob = " " })
 
 vim.diagnostic.config({
     float = { border = "rounded" },
@@ -38,8 +40,8 @@ vim.diagnostic.config({
 
 opt.undofile = true -- Enable undo file
 
-vim.diagnostic.enable(false)
--- vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.enable(true)
+vim.diagnostic.config({ virtual_text = false })
 -- vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.CRIT } })
 
 -- line numbers

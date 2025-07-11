@@ -76,7 +76,7 @@ return {
                 fzf_lua = {},
                 -- Options for nui Menu
                 nui = {
-                    border = Nil,
+                    border = "rounded",
                     borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
                     position = "50%",
                     size = nil,
