@@ -1,7 +1,7 @@
 require("night.core")
 require("night.lazy")
 
-vim.cmd("colorscheme solarized-osaka")
+vim.cmd("colorscheme catppuccin-mocha")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormalNC guibg=nil")
