@@ -22,15 +22,19 @@ return {
                 disabled_filetypes = { "alpha" },
             },
             sections = {
-                lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-                lualine_b = { "filename", "branch" },
+                lualine_a = { { separator = { left = "" }, right_padding = 2 } },
+                lualine_b = {},
                 lualine_c = {
-                    "%=", --[[ add your center components here in place of this comment ]]
+                    "mode",
+                    "filename",
+                    "branch",
+                    "%=",
+                    "diff",
                 },
-                lualine_x = {},
-                lualine_y = { "filetype", "progress" },
+                lualine_x = { "filetype", "location" },
+                lualine_y = {},
                 lualine_z = {
-                    { "location", separator = { right = "" }, left_padding = 2 },
+                    { separator = { right = "" }, left_padding = 2 },
                 },
             },
             inactive_sections = {
