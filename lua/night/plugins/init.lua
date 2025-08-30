@@ -8,4 +8,5 @@ return {
     "bfrg/vim-cpp-modern",
     "maxmellon/vim-jsx-pretty",
     "danymat/neogen",
+   "psliwka/vim-smoothie",
 }

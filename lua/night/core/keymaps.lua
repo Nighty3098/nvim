@@ -64,7 +64,7 @@ keymap.set("n", "<A-0>", ":BufferGoto 0<CR>", opts)
 keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>", opts)
 
 -- NeoTree (файловый проводник)
-keymap.set("n", "<leader>e", ":Neotree toggle left<CR>", opts)
+keymap.set("n", "<leader>e", ":Neotree left<CR>", opts)
 keymap.set("n", "<leader>ef", ":Neotree float<CR>", opts)
 keymap.set("n", "<leader>ec", ":Neotree close<CR>", opts)
 keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>", opts)
