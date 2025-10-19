@@ -9,39 +9,10 @@ vim.opt.fillchars =
     { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " }, -- make EndOfBuffer invisible
     vim.opt.fillchars:append({ eob = " " })
 
-vim.diagnostic.config({
-    float = { border = "rounded" },
-})
-
-vim.diagnostic.config({
-    virtual_text = {
-        enabled = true,
-        prefix = function(diagnostic)
-            if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                return "🭰× "
-            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-                return "🭰▲ "
-            else
-                return "🭰• "
-            end
-        end,
-        suffix = "🭵",
-    },
-    underline = true,
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = " ×",
-            [vim.diagnostic.severity.WARN] = " ▲",
-            [vim.diagnostic.severity.HINT] = " •",
-            [vim.diagnostic.severity.INFO] = " •",
-        },
-    },
-})
-
 opt.undofile = true -- Enable undo file
 
 vim.diagnostic.enable(true)
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
 -- vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.CRIT } })
 
 -- line numbers

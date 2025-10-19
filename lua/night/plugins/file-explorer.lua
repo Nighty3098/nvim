@@ -28,10 +28,10 @@ return {
     },
     config = function()
         -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-        vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-        vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-        vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-        vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+        vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })   -- красный крест, ошибка
+        vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })    -- жёлтый треугольник, предупреждение
+        vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })    -- синий круг с буквой i, информация
+        vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })    -- голубая лампочка, подсказка
 
         require("neo-tree").setup({
             close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -67,9 +67,9 @@ return {
                     expander_highlight = "NeoTreeExpander",
                 },
                 icon = {
-                    folder_closed = "",
-                    folder_open = "",
-                    folder_empty = "󰜌",
+                    folder_closed = " ",
+                    folder_open = " ",
+                    folder_empty = "󰜌 ",
                     provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
                         if node.type == "file" or node.type == "terminal" then
                             local success, web_devicons = pcall(require, "nvim-web-devicons")
@@ -97,17 +97,15 @@ return {
                 },
                 git_status = {
                     symbols = {
-                        -- Change type
-                        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                        deleted = "✖", -- this can only be used in the git_status source
-                        renamed = "󰁕", -- this can only be used in the git_status source
-                        -- Status type
-                        untracked = "",
-                        ignored = "",
-                        unstaged = "󰄱",
-                        staged = "",
-                        conflict = "",
+                        added = "A",
+                        modified = "M",
+                        deleted = "D",
+                        renamed = "R",
+                        untracked = "?",
+                        ignored = "!",
+                        unstaged = "?",
+                        staged = "S",
+                        conflict = "U",
                     },
                 },
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually

@@ -36,8 +36,8 @@ return {
             options = {
                 -- Display the source of the diagnostic (e.g., basedpyright, vsserver, lua_ls etc.)
                 show_source = {
-                    enabled = false,
-                    if_many = false,
+                    enabled = true,
+                    if_many = true,
                 },
 
                 -- Use icons defined in the diagnostic configuration
@@ -60,10 +60,6 @@ return {
 
                 -- Configuration for multiline diagnostics
                 -- Can either be a boolean or a table with the following options:
-                --  multilines = {
-                --      enabled = false,
-                --      always_show = false,
-                -- }
                 -- If it set as true, it will enable the feature with this options:
                 --  multilines = {
                 --      enabled = true,
@@ -71,7 +67,7 @@ return {
                 -- }
                 multilines = {
                     -- Enable multiline diagnostic messages
-                    enabled = false,
+                    enabled = true,
 
                     -- Always show messages on all lines for multiline diagnostics
                     always_show = true,
@@ -91,7 +87,7 @@ return {
                 enable_on_insert = false,
 
                 -- Enable diagnostics in Select mode (e.g when auto inserting with Blink)
-                enable_on_select = false,
+                enable_on_select = true,
 
                 overflow = {
                     -- Manage how diagnostic messages handle overflow
