@@ -21,10 +21,6 @@ return {
                     colorscheme = "tokyonight-moon",
                 },
                 {
-                    name = "yorumi",
-                    colorscheme = "yorumi",
-                },
-                {
                     name = "rose-pine",
                     colorscheme = "rose-pine",
                 },
@@ -61,10 +57,6 @@ return {
                     colorscheme = "gruvbox",
                 },
                 {
-                    name = "onenord",
-                    colorscheme = "onenord",
-                },
-                {
                     name = "ayu-dark",
                     colorscheme = "ayu-dark",
                 },
@@ -77,20 +69,12 @@ return {
                     colorscheme = "ayu-light",
                 },
                 {
-                    name = "onenord-light",
-                    colorscheme = "onenord-light",
-                },
-                {
                     name = "catppuccin-latte",
                     colorscheme = "catppuccin-latte",
                 },
                 {
                     name = "rose-pine-moon",
                     colorscheme = "rose-pine-moon",
-                },
-                {
-                    name = "moonfly",
-                    colorscheme = "moonfly",
                 },
                 {
                     name = "solarized-osaka",
