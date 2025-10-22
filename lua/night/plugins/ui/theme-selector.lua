@@ -57,6 +57,10 @@ return {
                     colorscheme = "gruvbox",
                 },
                 {
+                    name = "gruvbox-material",
+                    colorscheme = "gruvbox-material",
+                },
+                {
                     name = "ayu-dark",
                     colorscheme = "ayu-dark",
                 },

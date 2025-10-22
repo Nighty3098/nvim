@@ -12,6 +12,7 @@ return {
         local lualine = require("lualine")
 
         local custom_theme = require("lualine.themes.auto")
+        custom_theme.normal.b.bg = "NONE"
         custom_theme.normal.c.bg = "NONE" -- Прозрачный фон для секции C
 
         lualine.setup({
@@ -26,13 +27,12 @@ return {
                 lualine_b = {},
                 lualine_c = {
                     "mode",
-                    "filename",
                     "branch",
-                    "%=",
                     "diff",
-                    "diagnostics"
+                    "diagnostics",
+                    "%=",
                 },
-                lualine_x = { "filetype", "encoding", "location", "progress" },
+                lualine_x = { "encoding", "filename", "location", "progress" },
                 lualine_y = {},
                 lualine_z = {
                     { separator = { right = "" }, left_padding = 2 },
