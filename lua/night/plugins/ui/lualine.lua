@@ -28,11 +28,12 @@ return {
                 lualine_c = {
                     "mode",
                     "branch",
+                    "filename",
                     "diff",
                     "diagnostics",
                     "%=",
                 },
-                lualine_x = { "encoding", "filename", "location", "progress" },
+                lualine_x = { "encoding", "location", "progress" },
                 lualine_y = {},
                 lualine_z = {
                     { separator = { right = "" }, left_padding = 2 },
