@@ -21,8 +21,7 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
-                "cssls",
-                "lua_ls",
+                "clangd",
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
                 "isort", -- python formatter
