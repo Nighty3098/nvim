@@ -54,12 +54,6 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 -- zen mode
 keymap.set("n", "<leader>zm", ":ZenMode<CR>", opts)
 
--- buffer navigation (Alt+1..0)
-for i = 1, 9 do
-    keymap.set("n", "<A-" .. i .. ">", ":BufferGoto " .. i .. "<CR>", opts)
-end
-keymap.set("n", "<A-0>", ":BufferGoto 0<CR>", opts)
-
 -- maximizer toggle
 keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>", opts)
 
