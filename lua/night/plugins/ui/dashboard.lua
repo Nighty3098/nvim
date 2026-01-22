@@ -66,15 +66,15 @@ return {
                     local greeting_2
 
                     if current_hour < 5 then
-                        greeting = "    Good night!"
+                        greeting = "     Good night!"
                     elseif current_hour < 12 then
-                        greeting = "  󰼰 Good morning!"
+                        greeting = "  󰼰  Good morning!"
                     elseif current_hour < 17 then
-                        greeting = "    Good afternoon!"
+                        greeting = "     Good afternoon!"
                     elseif current_hour < 20 then
-                        greeting = "  󰖝  Good evening!"
+                        greeting = "  󰖝   Good evening!"
                     else
-                        greeting = "  󰖔  Good night!"
+                        greeting = "  󰖔   Good night!"
                     end
 
                     local stats = require("lazy").stats()

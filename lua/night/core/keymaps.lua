@@ -33,6 +33,12 @@ keymap.set("n", "<C-q>", ":BufferClose<CR>", opts) -- закрыть вклад�
 keymap.set("n", "<leader>tn", ":tabn<CR>", opts) -- следующая вкладка
 keymap.set("n", "<leader>tp", ":tabp<CR>", opts) -- предыдущая вкладка
 
+for i = 1, 9 do
+    keymap.set("n", "<A-" .. i .. ">", function()
+        vim.cmd("BufferLineGoToBuffer " .. (i - 1))
+    end, { desc = "Tab " .. i, noremap = true, silent = true })
+end
+
 ----------------------
 -- Плагины и LSP
 ----------------------
@@ -91,27 +97,7 @@ keymap.set(
 )
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for cwd", noremap = true, silent = true })
 
--- harpoon
-keymap.set(
-    "n",
-    "<leader>hm",
-    "<cmd>lua require('harpoon.mark').add_file()<CR>",
-    { desc = "Mark file with harpoon", noremap = true, silent = true }
-)
-keymap.set(
-    "n",
-    "<leader>hn",
-    "<cmd>lua require('harpoon.ui').nav_next()<CR>",
-    { desc = "Go to next harpoon mark", noremap = true, silent = true }
-)
-keymap.set(
-    "n",
-    "<leader>hp",
-    "<cmd>lua require('harpoon.ui').nav_prev()<CR>",
-    { desc = "Go to previous harpoon mark", noremap = true, silent = true }
-)
-
--- Themery (темы)
+-- темы
 keymap.set("n", "<leader>cc", ":Themery<CR>", opts)
 
 -- удаление строки (dd)
