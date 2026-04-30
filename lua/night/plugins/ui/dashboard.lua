@@ -6,89 +6,77 @@ return {
         init = false,
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
-
             math.randomseed(os.time())
 
             local logo = {
-                {
-" _______   ________  _______    ________   ______  ",
-" \\      \\  \\_____  \\ \\   _  \\  /   __   \\ /  __  \\ ",
-" /   |   \\   _(__  < /  /_\\  \\ \\____    / >      < ",
-"/    |    \\ /       \\\\  \\_/   \\   /    / /   --   \\",
-"\\____|__  //______  / \\_____  /  /____/  \\______  /",
-"        \\/        \\/        \\/                  \\/ ",
-                },
+                " _______   ________  _______    ________   ______  ",
+                " \\      \\  \\_____  \\ \\   _  \\  /   __   \\ /  __  \\ ",
+                " /   |   \\   _(__  < /  /_\\  \\ \\____    / >      < ",
+                "/    |    \\ /       \\\\  \\_/   \\   /    / /   --   \\",
+                "\\____|__  //______  / \\_____  /  /____/  \\______  /",
+                "        \\/        \\/        \\/                  \\/ ",
             }
 
-            local function pick_color()
-                local colors = { "String", "Identifier", "Keyword", "Number" }
-                return colors[math.random(#colors)]
-            end
+            local colors = { "String", "Identifier", "Keyword", "Number", "Special", "Type", "Function", "Constant" }
+            local random_color = colors[math.random(#colors)]
+            _G.alpha_random_color = random_color
 
-            local function getRandomBanner()
-                local randomIndex = math.random(1, #logo)
-                return logo[randomIndex]
-            end
-            dashboard.section.header.val = getRandomBanner()
-            dashboard.section.header.opts.hl = pick_color()
+            dashboard.section.header.val = logo
+            dashboard.section.header.opts.hl = random_color
 
             dashboard.section.buttons.val = {
                 dashboard.button("gc", "   Git commits", "<cmd>:Telescope git_commits<cr>"),
                 dashboard.button("gb", "   Git branches", "<cmd>:Telescope git_branches<cr>"),
             }
+
             for _, button in ipairs(dashboard.section.buttons.val) do
-                button.opts.hl = "Comment"
-                button.opts.hl_shortcut = ""
+                button.opts.hl = random_color
+                button.opts.hl_shortcut = random_color
                 button.opts.position = "center"
                 button.opts.width = 25
             end
-            dashboard.section.header.opts.hl = ""
-            dashboard.section.footer.opts.hl = "Keyword"
-            dashboard.opts.layout[1].val = 8
+
+            dashboard.section.footer.opts.hl = random_color
+
+            dashboard.config.layout = {
+                {
+                    type = "padding",
+                    val = function()
+                        local content_height = #logo + (#dashboard.section.buttons.val * 2) + 4
+                        local win_height = vim.api.nvim_win_get_height(0)
+                        local padding = math.floor((win_height - content_height) / 2)
+                        return math.max(padding, 0)
+                    end,
+                },
+                dashboard.section.header,
+                { type = "padding", val = 2 },
+                dashboard.section.buttons,
+                { type = "padding", val = 1 },
+                dashboard.section.footer,
+            }
+
             return dashboard
         end,
-
         config = function(_, dashboard)
             if vim.o.filetype == "lazy" then
                 vim.cmd.close()
                 vim.api.nvim_create_autocmd("User", {
                     once = true,
                     pattern = "AlphaReady",
-                    callback = function()
-                        require("lazy").show()
-                    end,
+                    callback = function() require("lazy").show() end,
                 })
             end
 
-            require("alpha").setup(dashboard.opts)
+            require("alpha").setup(dashboard.config)
 
             vim.api.nvim_create_autocmd("User", {
                 once = true,
                 pattern = "LazyVimStarted",
                 callback = function()
-                    local current_hour = tonumber(os.date("%H"))
-                    local greeting
-                    local greeting_2
-
-                    if current_hour < 5 then
-                        greeting = "     Good night!"
-                    elseif current_hour < 12 then
-                        greeting = "  󰼰  Good morning!"
-                    elseif current_hour < 17 then
-                        greeting = "     Good afternoon!"
-                    elseif current_hour < 20 then
-                        greeting = "  󰖝   Good evening!"
-                    else
-                        greeting = "  󰖔   Good night!"
-                    end
-
                     local stats = require("lazy").stats()
-                    local ms = math.floor(stats.startuptime * 100) / 100
-
-                    local fg_color = tostring(math.random(0, 12))
-
-                    dashboard.section.footer.val = greeting
-
+                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                    dashboard.section.footer.val = "Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
+                    dashboard.section.footer.opts.hl = _G.alpha_random_color
                     pcall(vim.cmd.AlphaRedraw)
                 end,
             })

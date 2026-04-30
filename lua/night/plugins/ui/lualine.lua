@@ -1,9 +1,7 @@
 return {
     "hoob3rt/lualine.nvim",
     event = "VeryLazy",
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     init = function()
         vim.opt.laststatus = 0
     end,
@@ -12,43 +10,57 @@ return {
         local lualine = require("lualine")
 
         local custom_theme = require("lualine.themes.auto")
-        custom_theme.normal.b.bg = "NONE"
-        custom_theme.normal.c.bg = "NONE" -- Прозрачный фон для секции C
+        local function clear_bg(section)
+            if section then section.bg = "NONE" end
+        end
+
+        local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+        for _, mode in ipairs(modes) do
+            if custom_theme[mode] then
+                for _, section in pairs(custom_theme[mode]) do
+                    clear_bg(section)
+                end
+            end
+        end
 
         lualine.setup({
             options = {
                 theme = custom_theme,
                 component_separators = "",
-                section_separators = { left = "", right = "" },
+                section_separators = "",
                 disabled_filetypes = { "alpha" },
+                globalstatus = true,
+                icons_enabled = true,
             },
             sections = {
-                lualine_a = { { separator = { left = "" }, right_padding = 2 } },
-                lualine_b = {},
+                lualine_a = {
+                    { "mode", fmt = function(str) return str:sub(1,1) end, padding = { left = 0, right = 1 } }
+                },
+                lualine_b = { "branch" },
                 lualine_c = {
-                    "mode",
-                    "branch",
-                    "filename",
+                    { "filename", icon_enabled = false, symbols = { modified = "●", readonly = "" } },
                     "%=",
-                    "diff",
-                    "diagnostics",
+                    {
+                        "diagnostics",
+                        symbols = { error = "• ", warn = "• ", info = "• ", hint = "• " },
+                    },
                 },
-                lualine_x = { "encoding", "location", "progress" },
-                lualine_y = {},
-                lualine_z = {
-                    { separator = { right = "" }, left_padding = 2 },
+                lualine_x = {
+                    { function() return vim.bo.filetype end, padding = { left = 1, right = 0 } }
                 },
-            },
-            inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {},
+                lualine_y = {
+                    {
+                        function()
+                            local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+                            if #clients == 0 then return "" end
+                            return "   " .. clients[1].name
+                        end,
+                        padding = { left = 1, right = 1 }
+                    },
+                    "location",
+                },
                 lualine_z = {},
             },
-            tabline = {},
-            extensions = { "nvim-tree", "fzf" },
         })
     end,
 }
