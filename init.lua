@@ -2,7 +2,7 @@ require("night.core")
 require("night.lazy")
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
-vim.cmd("colorscheme vague")
+vim.cmd("colorscheme kanagawa-wave")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormalNC guibg=nil")
@@ -11,6 +11,7 @@ vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
 vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
 vim.cmd("hi TabLine gui=NONE")
 
+-- oxocarbon
 -- vague
 -- everblush
 -- everforest

@@ -11,7 +11,9 @@ return {
 
         local custom_theme = require("lualine.themes.auto")
         local function clear_bg(section)
-            if section then section.bg = "NONE" end
+            if section then
+                section.bg = "NONE"
+            end
         end
 
         local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
@@ -34,7 +36,7 @@ return {
             },
             sections = {
                 lualine_a = {
-                    { "mode", fmt = function(str) return str:sub(1,1) end, padding = { left = 0, right = 1 } }
+                    -- { "mode", fmt = function(str) return str:sub(1,1) end, padding = { left = 0, right = 1 } }
                 },
                 lualine_b = { "branch" },
                 lualine_c = {
@@ -46,16 +48,23 @@ return {
                     },
                 },
                 lualine_x = {
-                    { function() return vim.bo.filetype end, padding = { left = 1, right = 0 } }
+                    {
+                        function()
+                            return vim.bo.filetype
+                        end,
+                        padding = { left = 1, right = 0 },
+                    },
                 },
                 lualine_y = {
                     {
                         function()
                             local clients = vim.lsp.get_active_clients({ bufnr = 0 })
-                            if #clients == 0 then return "" end
+                            if #clients == 0 then
+                                return ""
+                            end
                             return "   " .. clients[1].name
                         end,
-                        padding = { left = 1, right = 1 }
+                        padding = { left = 1, right = 1 },
                     },
                     "location",
                 },

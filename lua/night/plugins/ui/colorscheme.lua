@@ -1,4 +1,5 @@
 return {
+    { "nyoom-engineering/oxocarbon.nvim" },
     { "vague2k/vague.nvim" },
     { "morhetz/gruvbox" },
     { "Everblush/nvim", name = "everblush" },
