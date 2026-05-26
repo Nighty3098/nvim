@@ -16,14 +16,14 @@ return {
             local random_color = colors[math.random(#colors)]
             _G.alpha_random_color = random_color
 
-            -- Выбираем случайный логотип
             local random_logo = logos[math.random(#logos)]
             dashboard.section.header.val = random_logo
             dashboard.section.header.opts.hl = random_color
 
             dashboard.section.buttons.val = {
+                dashboard.button("mn", "   My Notes", "<cmd>cd ~/MY_NOTES | Alpha<cr>"),
+                dashboard.button("gg", "   LazyGit", "<cmd>:LazyGit<cr>"),
                 dashboard.button("gc", "   Git commits", "<cmd>:Telescope git_commits<cr>"),
-                dashboard.button("gb", "   Git branches", "<cmd>:Telescope git_branches<cr>"),
             }
 
             for _, button in ipairs(dashboard.section.buttons.val) do

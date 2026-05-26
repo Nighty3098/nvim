@@ -143,3 +143,5 @@ keymap.set(
     ":lua vim.diagnostic.open_float()<CR>",
     { desc = "Diagnostic", noremap = true, silent = true }
 )
+
+keymap.set("n", "<leader>gg", ":LazyGit<CR>")
