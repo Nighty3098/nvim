@@ -144,4 +144,5 @@ keymap.set(
     { desc = "Diagnostic", noremap = true, silent = true }
 )
 
+keymap.set("n", "<leader>vs", ":VenvSelect<cr>")
 keymap.set("n", "<leader>gg", ":LazyGit<CR>")
