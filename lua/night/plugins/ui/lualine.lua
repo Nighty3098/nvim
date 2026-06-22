@@ -9,25 +9,31 @@ return {
         vim.opt.laststatus = 3
         local lualine = require("lualine")
 
-        local custom_theme = require("lualine.themes.auto")
-        local function clear_bg(section)
-            if section then
-                section.bg = "NONE"
-            end
-        end
+        local function build_theme()
+            local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+            local fg_color = hl.fg and string.format("#%06x", hl.fg) or "#ffffff"
 
-        local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
-        for _, mode in ipairs(modes) do
-            if custom_theme[mode] then
-                for _, section in pairs(custom_theme[mode]) do
-                    clear_bg(section)
+            local theme = require("lualine.themes.auto")
+            local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+
+            for _, mode in ipairs(modes) do
+                if theme[mode] then
+                    for _, section in pairs(theme[mode]) do
+                        if section then
+                            section.fg = fg_color
+                            section.bg = "NONE"
+                        end
+                    end
                 end
             end
+            return theme
         end
+
+        local current_theme = build_theme()
 
         lualine.setup({
             options = {
-                theme = custom_theme,
+                theme = current_theme,
                 component_separators = "",
                 section_separators = "",
                 disabled_filetypes = { "alpha" },
@@ -35,9 +41,7 @@ return {
                 icons_enabled = true,
             },
             sections = {
-                lualine_a = {
-                    -- { "mode", fmt = function(str) return str:sub(1,1) end, padding = { left = 0, right = 1 } }
-                },
+                lualine_a = {},
                 lualine_b = { "branch" },
                 lualine_c = {
                     { "filename", icon_enabled = false, symbols = { modified = "●", readonly = "" } },
@@ -70,6 +74,14 @@ return {
                 },
                 lualine_z = {},
             },
+        })
+
+        vim.api.nvim_create_autocmd("ColorScheme", {
+            callback = function()
+                local new_theme = build_theme()
+                require("lualine").setup({ options = { theme = new_theme } })
+                require("lualine").refresh()
+            end,
         })
     end,
 }
