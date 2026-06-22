@@ -45,6 +45,7 @@ return {
                 lualine_b = { "branch" },
                 lualine_c = {
                     { "filename", icon_enabled = false, symbols = { modified = "●", readonly = "" } },
+                    { "filesize", padding = { left = 0, right = 1 } },
                     "%=",
                     {
                         "diagnostics",
