@@ -6,8 +6,4 @@ return {
             worktrees = vim.g.git_worktrees,
         },
     },
-    {
-        "dinhhuy258/git.nvim",
-        event = "BufReadPre",
-    },
 }

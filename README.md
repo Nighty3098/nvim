@@ -13,6 +13,7 @@
 <br><br>
 
 <br><br>
+
 <h1>Installing</h1>
 <div align="left">
 
@@ -30,17 +31,5 @@ git clone https://github.com/Nighty3098/nvim ~/.config/nvim
 <img src="img/3.png" />
 <img src="img/4.png" />
 <img src="img/5.png" />
-
-</div>
-
-<br><br><br>
-
-<div align="center">
-
-### **`💵 Support me`**
-<img src="https://github.com/Nighty3098/CodeKeeper/blob/main/imgs/toncoin.png?raw=true" width="45px"/>
-<br>
-
-***`UQCF-sPDO0QqkNtvy5CKSvYWEsZS6l7vzaytV36oYM0SNhKt`***
 
 </div>
