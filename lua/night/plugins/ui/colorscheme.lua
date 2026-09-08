@@ -1,4 +1,5 @@
 return {
+    { "projekt0n/github-nvim-theme" },
     { "nyoom-engineering/oxocarbon.nvim" },
     { "vague2k/vague.nvim" },
     { "morhetz/gruvbox" },

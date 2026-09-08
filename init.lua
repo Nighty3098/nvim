@@ -2,7 +2,7 @@ require("night.core")
 require("night.lazy")
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
-vim.cmd("colorscheme nightfly")
+vim.cmd("colorscheme github_dark_high_contrast")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormalNC guibg=nil")
@@ -11,6 +11,12 @@ vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
 vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
 vim.cmd("hi TabLine gui=NONE")
 
+-- github_dark
+-- github_dark_default
+-- github_dark_dimmed
+-- github_dark_high_contrast
+-- github_dark_colorblind
+-- github_dark_tritanopia
 -- oxocarbon
 -- vague
 -- everblush
