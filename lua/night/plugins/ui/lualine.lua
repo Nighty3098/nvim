@@ -77,11 +77,76 @@ return {
             },
         })
 
+        local sections = { "a", "b", "c", "x", "y", "z" }
+
+        local function apply_transparent_hl()
+            local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+            local fg = hl.fg and string.format("#%06x", hl.fg) or "#ffffff"
+            local modes = { "normal", "insert", "visual", "replace", "command", "inactive", "terminal" }
+            for _, mode in ipairs(modes) do
+                for _, sec in ipairs(sections) do
+                    local group = "lualine_" .. sec .. "_" .. mode
+                    local ok, cur = pcall(vim.api.nvim_get_hl, 0, { name = group })
+                    if ok and cur then
+                        vim.api.nvim_set_hl(0, group, {
+                            fg = cur.fg or fg,
+                            bg = "NONE",
+                            bold = cur.bold,
+                            italic = cur.italic,
+                        })
+                    end
+                end
+            end
+            -- Empty/leftover lualine sections and the global statusline render
+            -- with the StatusLine background, so clear those too.
+            local base_groups = {
+                "StatusLine",
+                "StatusLineNC",
+                "WinBar",
+                "WinBarNC",
+                "StatusLineTerm",
+                "StatusLineTermNC",
+            }
+            for _, group in ipairs(base_groups) do
+                local ok, cur = pcall(vim.api.nvim_get_hl, 0, { name = group })
+                if ok and cur then
+                    vim.api.nvim_set_hl(0, group, {
+                        fg = cur.fg or fg,
+                        bg = "NONE",
+                        bold = cur.bold,
+                        italic = cur.italic,
+                    })
+                end
+            end
+        end
+
+        apply_transparent_hl()
+
+        local function schedule_transparent()
+            -- Apply in a loop to make sure we win the race against theme
+            -- integrations that also touch lualine groups after ColorScheme.
+            local count = 0
+            vim.defer_fn(function()
+                apply_transparent_hl()
+                require("lualine").refresh()
+                count = count + 1
+                if count < 5 then
+                    vim.defer_fn(function()
+                        apply_transparent_hl()
+                        require("lualine").refresh()
+                        count = count + 1
+                    end, 100)
+                end
+            end, 100)
+        end
+
         vim.api.nvim_create_autocmd("ColorScheme", {
             callback = function()
                 local new_theme = build_theme()
                 require("lualine").setup({ options = { theme = new_theme } })
+                apply_transparent_hl()
                 require("lualine").refresh()
+                schedule_transparent()
             end,
         })
     end,

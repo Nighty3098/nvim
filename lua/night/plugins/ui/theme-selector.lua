@@ -5,6 +5,26 @@ return {
         require("themery").setup({
             themes = {
                 {
+                    name = "github_dark",
+                    colorscheme = "github_dark",
+                },
+                {
+                    name = "github_dark_default",
+                    colorscheme = "github_dark_default",
+                },
+                {
+                    name = "github_dark_dimmed",
+                    colorscheme = "github_dark_dimmed",
+                },
+                {
+                    name = "github_dark_high_contrast",
+                    colorscheme = "github_dark_high_contrast",
+                },
+                {
+                    name = "github_dark_tritanopia",
+                    colorscheme = "github_dark_tritanopia",
+                },
+                {
                     name = "everforest",
                     colorscheme = "everforest",
                 },
