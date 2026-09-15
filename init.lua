@@ -2,7 +2,7 @@ require("night.core")
 require("night.lazy")
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
-vim.cmd("colorscheme github_dark_high_contrast")
+vim.cmd("colorscheme nightfly")
 vim.cmd("hi NvimTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormal guibg=nil")
 vim.cmd("hi NeoTreeNormalNC guibg=nil")
