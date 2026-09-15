@@ -1,6 +1,7 @@
 local config = function()
     require("nvim-treesitter.config").setup({
         auto_install = true,
+        ensure_installed = { "python", "c", "cpp", "typescript", "javascript" },
         highlight = {
             enable = true,
         },

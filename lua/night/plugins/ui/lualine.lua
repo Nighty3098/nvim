@@ -67,6 +67,74 @@ return {
             return { fg = window_bg, bg = bg }
         end
 
+        local skip_types_c = {
+            parameter_list = true,
+            compound_statement = true,
+            initializer_list = true,
+            argument_list = true,
+            template_parameter_list = true,
+            template_argument_list = true,
+        }
+
+        -- First identifier inside a C/C++ function declarator is the function name.
+        local function c_function_name(root)
+            local function walk(n)
+                local t = n:type()
+                if t == "identifier" then
+                    return vim.treesitter.get_node_text(n, 0)
+                end
+                if not skip_types_c[t] then
+                    for _, child in ipairs(n:iter_children()) do
+                        local res = walk(child)
+                        if res then
+                            return res
+                        end
+                    end
+                end
+                return nil
+            end
+            return walk(root)
+        end
+
+        -- Name of the function under the cursor for python, c/c++, js/ts.
+        local function current_function_name()
+            local node = vim.treesitter.get_node()
+            while node do
+                local t = node:type()
+                local name_field = node:field("name")
+                if name_field and name_field[1] then
+                    return vim.treesitter.get_node_text(name_field[1], 0)
+                end
+                if t == "function_definition" then -- c/c++
+                    local declarator = node:field("declarator")
+                    if declarator and declarator[1] then
+                        local text = c_function_name(declarator[1])
+                        if text then
+                            return text
+                        end
+                    end
+                end
+                if t == "variable_declarator" then -- js/ts arrows: const foo = () => {}
+                    local value = node:field("value")
+                    if
+                        value
+                        and value[1]
+                        and vim.tbl_contains({ "arrow_function", "function_expression" }, value[1]:type())
+                    then
+                        local name_field = node:field("name")
+                        if name_field and name_field[1] then
+                            local text = vim.treesitter.get_node_text(name_field[1], 0)
+                            if text and text ~= "" then
+                                return text
+                            end
+                        end
+                    end
+                end
+                node = node:parent()
+            end
+            return ""
+        end
+
         local function build_theme()
             local normal_bg = hl_color("Normal")
             local dark = not normal_bg or luminance(normal_bg) < 0.5
@@ -121,6 +189,15 @@ return {
                             return block(3)
                         end,
                     },
+                    {
+                        function()
+                            return current_function_name()
+                        end,
+                        padding = { left = 1, right = 1 },
+                        color = function()
+                            return block(3)
+                        end,
+                    },
                     "%=",
                     {
                         "diagnostics",
@@ -159,6 +236,28 @@ return {
                         padding = { left = 1, right = 1 },
                         color = function()
                             return block(6)
+                        end,
+                    },
+                    {
+                        "diff",
+                        colored = false,
+                        padding = { left = 1, right = 1 },
+                        color = function()
+                            return block(2)
+                        end,
+                    },
+                    {
+                        "encoding",
+                        padding = { left = 1, right = 1 },
+                        color = function()
+                            return block(6)
+                        end,
+                    },
+                    {
+                        "selectioncount",
+                        padding = { left = 1, right = 1 },
+                        color = function()
+                            return block(5)
                         end,
                     },
                 },
