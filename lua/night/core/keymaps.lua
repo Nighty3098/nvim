@@ -146,3 +146,5 @@ keymap.set(
 
 keymap.set("n", "<leader>vs", ":VenvSelect<cr>")
 keymap.set("n", "<leader>gg", ":LazyGit<CR>")
+
+keymap.set("n", "<leader>mp", ":Vellum<CR>")
