@@ -27,6 +27,24 @@ keymap.set("n", "<leader>sh", "<C-w>s", opts) -- горизонтальное р
 keymap.set("n", "<leader>se", "<C-w>=", opts) -- выравнивание окон
 keymap.set("n", "<leader>cs", ":close<CR>", opts) -- закрыть окно
 
+-- Alt+стрелки — переход между окнами (NeoTree, сплиты, код и т.д.)
+keymap.set("n", "<A-Left>", "<C-w>h", opts)
+keymap.set("n", "<A-Right>", "<C-w>l", opts)
+keymap.set("n", "<A-Up>", "<C-w>k", opts)
+keymap.set("n", "<A-Down>", "<C-w>j", opts)
+keymap.set("i", "<A-Left>", "<C-\\><C-n><C-w>h", opts)
+keymap.set("i", "<A-Right>", "<C-\\><C-n><C-w>l", opts)
+keymap.set("i", "<A-Up>", "<C-\\><C-n><C-w>k", opts)
+keymap.set("i", "<A-Down>", "<C-\\><C-n><C-w>j", opts)
+keymap.set("v", "<A-Left>", "<Esc><C-w>h", opts)
+keymap.set("v", "<A-Right>", "<Esc><C-w>l", opts)
+keymap.set("v", "<A-Up>", "<Esc><C-w>k", opts)
+keymap.set("v", "<A-Down>", "<Esc><C-w>j", opts)
+keymap.set("t", "<A-Left>", "<C-\\><C-n><C-w>h", opts)
+keymap.set("t", "<A-Right>", "<C-\\><C-n><C-w>l", opts)
+keymap.set("t", "<A-Up>", "<C-\\><C-n><C-w>k", opts)
+keymap.set("t", "<A-Down>", "<C-\\><C-n><C-w>j", opts)
+
 -- вкладки
 keymap.set("n", "<leader>nt", ":tabnew<CR>", opts) -- новая вкладка
 keymap.set("n", "<C-q>", ":BufferClose<CR>", opts) -- закрыть вкладку
