@@ -150,6 +150,20 @@ keymap.set("n", "<C-b>", function()
     vim.api.nvim_feedkeys("b", "n", false)
 end, opts)
 
+-- Ctrl+стрелки влево/вправо — перемещение по словам (как в VS Code/браузере)
+-- Kitty/tmux могут слать сырые esc-последовательности вместо <C-Left>/<C-Right>,
+-- поэтому мапим и их (по аналогии с Alt+стрелками выше).
+local word_motion = {
+    { "<C-Left>", "<Esc>[1;5D", "b" },
+    { "<C-Right>", "<Esc>[1;5C", "w" },
+}
+for _, m in ipairs(word_motion) do
+    for _, key in ipairs({ m[1], m[2] }) do
+        keymap.set({ "n", "v" }, key, m[3], opts)
+        keymap.set("i", key, "<C-o>" .. m[3], opts)
+    end
+end
+
 -- Home — начало строки
 keymap.set("n", "<Home>", "0", opts)
 keymap.set("i", "<Home>", "<C-o>0", opts)
