@@ -62,14 +62,34 @@ end
 
 -- вкладки
 keymap.set("n", "<leader>nt", ":tabnew<CR>", opts) -- новая вкладка
-keymap.set("n", "<C-q>", ":BufferClose<CR>", opts) -- закрыть вкладку
+-- закрыть текущий буфер (раньше был плагин bufdelete; теперь встроенный :bdelete)
+keymap.set("n", "<C-q>", function()
+    if vim.api.nvim_buf_get_option(0, "modified") then
+        local answer = vim.fn.confirm("Буфер изменён. Всё равно закрыть?", "&Да\n&Нет")
+        if answer ~= 1 then
+            return
+        end
+    end
+    vim.cmd("bdelete")
+end, opts)
 keymap.set("n", "<leader>tn", ":tabn<CR>", opts) -- следующая вкладка
 keymap.set("n", "<leader>tp", ":tabp<CR>", opts) -- предыдущая вкладка
 
+-- Alt+1..9 — перейти к i-му буферу из списка (раньше был bufferline.nvim)
+local listed_buffers = function()
+    local bufs = vim.tbl_filter(function(b)
+        return vim.fn.buflisted(b) == 1
+    end, vim.api.nvim_list_bufs())
+    table.sort(bufs)
+    return bufs
+end
 for i = 1, 9 do
     keymap.set("n", "<A-" .. i .. ">", function()
-        vim.cmd("BufferLineGoToBuffer " .. (i - 1))
-    end, { desc = "Tab " .. i, noremap = true, silent = true })
+        local bufs = listed_buffers()
+        if bufs[i] then
+            vim.api.nvim_win_set_buf(0, bufs[i])
+        end
+    end, { desc = "Буфер " .. i, noremap = true, silent = true })
 end
 
 ----------------------
@@ -93,8 +113,17 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 -- zen mode
 keymap.set("n", "<leader>zm", ":ZenMode<CR>", opts)
 
--- maximizer toggle
-keymap.set("n", "<leader>mt", ":MaximizerToggle<CR>", opts)
+-- максимизировать/восстановить окно (раньше был плагин vim-maximizer)
+local maximized = false
+keymap.set("n", "<leader>mt", function()
+    maximized = not maximized
+    if maximized then
+        vim.cmd("wincmd _") -- на всю высоту
+        vim.cmd("wincmd |") -- на всю ширину
+    else
+        vim.cmd("wincmd =") -- снова равные размеры
+    end
+end, opts)
 
 -- NeoTree (файловый проводник)
 keymap.set("n", "<leader>e", ":Neotree left<CR>", opts)
@@ -102,8 +131,8 @@ keymap.set("n", "<leader>ef", ":Neotree float<CR>", opts)
 keymap.set("n", "<leader>ec", ":Neotree close<CR>", opts)
 keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>", opts)
 
--- tagbar
-keymap.set("n", "<leader>t", ":TagbarToggle<CR>", opts)
+-- символы файла через Telescope (раньше был плагин tagbar)
+keymap.set("n", "<leader>t", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 
 -- терминал
 keymap.set("n", "<leader>ot", ":terminal<CR>", opts)
@@ -121,14 +150,22 @@ keymap.set("n", "<leader>gbc", "<cmd>Telescope git_bcommits<CR>", opts)
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opts)
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>", opts)
 
--- сессии
-keymap.set(
-    "n",
-    "<leader>wr",
-    "<cmd>SessionRestore<CR>",
-    { desc = "Restore session for cwd", noremap = true, silent = true }
-)
-keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for cwd", noremap = true, silent = true })
+-- сессии (встроенный :mksession; раньше был плагин auto-session)
+local session_dir = vim.fn.stdpath("state") .. "/sessions"
+vim.fn.mkdir(session_dir, "p")
+local function session_file()
+    local name = vim.fn.getcwd():gsub("/", "_"):gsub("[^%w_-]", "")
+    if name == "" then
+        name = "default"
+    end
+    return session_dir .. "/" .. name .. ".vim"
+end
+keymap.set("n", "<leader>wr", function()
+    vim.cmd("source " .. vim.fn.fnameescape(session_file()))
+end, { desc = "Restore session for cwd", noremap = true, silent = true })
+keymap.set("n", "<leader>ws", function()
+    vim.cmd("mksession! " .. vim.fn.fnameescape(session_file()))
+end, { desc = "Save session for cwd", noremap = true, silent = true })
 
 -- темы
 keymap.set("n", "<leader>cc", ":Themery<CR>", opts)
