@@ -62,6 +62,7 @@
   "vellum.nvim": { "branch": "main", "commit": "c9a8665c5d306bf56c6df89896fed8bfaf3110b3" },
   "venv-selector.nvim": { "branch": "main", "commit": "cc4bb3975de8835291f9bb45889e96c6b2795fc4" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "66050453bf40ac7eddc7a84dd15291db85fefc43" },
+  "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "zen-mode.nvim": { "branch": "main", "commit": "8564ce6d29ec7554eb9df578efa882d33b3c23a7" }
 }
