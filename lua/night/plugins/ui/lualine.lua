@@ -223,8 +223,8 @@ return {
                 lualine_y = {
                     {
                         function()
-                            local clients = vim.lsp.get_active_clients({ bufnr = 0 })
-                            return clients[1].name
+                            local clients = vim.lsp.get_clients({ bufnr = 0 })
+                            return clients[1] and clients[1].name or ""
                         end,
                         padding = { left = 1, right = 1 },
                         color = function()
