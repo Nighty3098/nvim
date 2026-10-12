@@ -1,6 +1,6 @@
 # Neovim Plugins
 
-> Список всех используемых плагинов (кроме тем оформления).
+> Список используемых плагинов (кроме тем оформления).
 
 ## Plugin Manager
 
@@ -21,20 +21,17 @@
 - **folke/zen-mode.nvim** — режим без отвлечений (distraction-free)
 - **zaldih/themery.nvim** — переключатель тем (UI для выбора цветовой схемы)
 - **rachartier/tiny-inline-diagnostic.nvim** — инлайн-диагностика (сообщения об ошибках в тексте)
+- **xiyaowong/transparent.nvim** — прозрачный фон для различных highlight-групп
 
 ## Редактирование
 
 - **mg979/vim-visual-multi** — множественные курсоры (multi-cursor)
 - **kylechui/nvim-surround** — добавление/изменение/удаление окружения (скобки, кавычки и т.д.)
-- **inkarkat/vim-ReplaceWithRegister** — замена текста содержимым регистра (`gr` + motion)
 - **numToStr/Comment.nvim** — комментирование кода через motions
 - **JoosepAlviste/nvim-ts-context-commentstring** — контекстно-зависимые строки комментариев (для Comment.nvim)
 - **windwp/nvim-autopairs** — автоматическое закрытие скобок и кавычек
 - **lukas-reineke/indent-blankline.nvim** — направляющие отступов (indent guides)
 - **echasnovski/mini.bracketed** — навигация по скобкам (файлы, окна, quickfix, yank, treesitter)
-- **psliwka/vim-smoothie** — плавная прокрутка
-- **xiyaowong/transparent.nvim** — прозрачный фон для различных highlight-групп
-- **s1n7ax/nvim-window-picker** — выбор окна для открытия файла
 
 ## Файловый менеджер
 
@@ -45,34 +42,25 @@
 - **nvim-telescope/telescope.nvim** — расширяемый fuzzy finder
 - **nvim-telescope/telescope-fzf-native.nvim** — нативный fzf-сортировщик для telescope
 
-## Автодополнение (nvim-cmp)
+## Автодополнение (blink.cmp)
 
-- **hrsh7th/nvim-cmp** — движок автодополнения
-- **hrsh7th/cmp-buffer** — автодополнение из буфера
-- **hrsh7th/cmp-path** — автодополнение путей
-- **hrsh7th/cmp-nvim-lsp** — автодополнение от LSP
-- **rafamadriz/friendly-snippets** — коллекция готовых сниппетов
-- **onsails/lspkind.nvim** — иконки для видов автодополнения
+- **saghen/blink.cmp** — движок автодополнения (LSP, path, snippets, buffer)
+- **rafamadriz/friendly-snippets** — коллекция готовых сниппетов (грузятся самим blink.cmp)
 - **brenoprata10/nvim-highlight-colors** — подсветка цветовых кодов в буфере
 
 ## LSP
 
 - **neovim/nvim-lspconfig** — конфигурация LSP-клиента
-- **williamboman/mason.nvim** — установщик LSP/DAP/линтеров
+- **williamboman/mason.nvim** — установщик LSP/линтеров/форматтеров
 - **williamboman/mason-lspconfig.nvim** — мост между mason и lspconfig
 - **WhoIsSethDaniel/mason-tool-installer.nvim** — гарантированная установка инструментов через mason
 - **antosha417/nvim-lsp-file-operations** — LSP-операции с файлами (rename, create, delete)
-- **folke/neodev.nvim** — настройка Lua/LuaLS (типы для Neovim API)
-
-## Отладка
-
-- **mfussenegger/nvim-dap** — клиент протокола DAP (Debug Adapter Protocol)
+- **folke/lazydev.nvim** — подсказки и автодополнение для настроек Neovim (типы Lua, lazy.nvim)
 
 ## Форматирование и линтинг
 
 - **stevearc/conform.nvim** — форматтер кода
 - **mfussenegger/nvim-lint** — асинхронный линтер
-- **rhysd/vim-clang-format** — форматирование C/C++ через clang-format
 
 ## Treesitter
 
@@ -82,21 +70,11 @@
 ## Git
 
 - **lewis6991/gitsigns.nvim** — git-символы в gutter (добавлено, изменено, удалено)
-- **dinhhuy258/git.nvim** — git-команды и операции
+- **kdheepak/lazygit.nvim** — открытие lazygit из nvim (требует установленный lazygit)
 
-## Аннотации / Документация
+## Заметки / Markdown / Python
 
-- **danymat/neogen** — генератор аннотаций (документация)
-
-## Markdown
-
-- **OXY2DEV/markview.nvim** — предпросмотр и рендеринг Markdown (с поддержкой LaTeX)
-
-## Подсветка синтаксиса
-
-- **bfrg/vim-cpp-modern** — современная подсветка C++
-- **maxmellon/vim-jsx-pretty** — подсветка JSX/TSX
-
-## Lazy development
-
-- **folke/lazydev.nvim** — подсказки и автодополнение для настроек lazy.nvim
+- **obsidian-nvim/obsidian.nvim** — работа с хранилищем Obsidian
+- **blackhat-7/vellum.nvim** — быстрый рендеринг Markdown (включён для ft=markdown)
+- **2giosangmitom/sqmeow.nvim** — заметки и персональный WIP-плагин (`<leader>D*`)
+- **linux-cultist/venv-selector.nvim** — выбор Python-виртуального окружения
