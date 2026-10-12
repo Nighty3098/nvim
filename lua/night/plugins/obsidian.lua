@@ -5,7 +5,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
-        -- "hrsh7th/nvim-cmp", -- autocomplete
+        -- "saghen/blink.cmp", -- autocomplete
     },
     opts = {
         legacy_commands = false,

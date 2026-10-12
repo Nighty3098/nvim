@@ -2,7 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
         "williamboman/mason-lspconfig.nvim",
     },
@@ -13,9 +12,6 @@ return {
         -- import mason_lspconfig plugin
         local mason_lspconfig = require("mason-lspconfig")
 
-        -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
         local keymap = vim.keymap -- for conciseness
 
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -24,7 +20,7 @@ return {
         })
 
         -- used to enable autocompletion (assign to every lsp server config)
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
 
         -- Change the Diagnostic symbols in the sign column (gutter)
         local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
