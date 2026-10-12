@@ -93,6 +93,46 @@ return {
                         },
                     })
                 end,
+
+                ["clangd"] = function()
+                    -- C/C++: для корректной работы нужен compile_commands.json.
+                    -- CMake генерирует его при конфигурации с
+                    -- -DCMAKE_EXPORT_COMPILE_COMMANDS=ON (или CMAKE_EXPORT_COMPILE_COMMANDS=ON).
+                    lspconfig["clangd"].setup({
+                        capabilities = capabilities,
+                        cmd = {
+                            "clangd",
+                            "--background-index", -- проектный индекс в фоне
+                            "--clang-tidy", -- clang-tidy диагностики прямо из clangd
+                            "--header-insertion=iwyu", -- автовставка include-what-you-use
+                            "--completion-style=detailed", -- полные подписи в автокомплите
+                        },
+                    })
+                end,
+
+                ["neocmake"] = function()
+                    -- CMakeLists.txt (neocmakelsp): ищет build / cmake / .git как root
+                    lspconfig["neocmake"].setup({
+                        capabilities = capabilities,
+                    })
+                end,
+
+                ["pyright"] = function()
+                    -- Python: venv подхватывается автоматически через venv-selector
+                    -- (встроенный хук перезапускает pyright и прописывает python.pythonPath)
+                    lspconfig["pyright"].setup({
+                        capabilities = capabilities,
+                        settings = {
+                            python = {
+                                analysis = {
+                                    typeCheckingMode = "basic",
+                                    autoSearchPaths = true, -- использовать пакеты из envs
+                                    useLibraryCodeForTypes = true,
+                                },
+                            },
+                        },
+                    })
+                end,
             },
         })
     end,

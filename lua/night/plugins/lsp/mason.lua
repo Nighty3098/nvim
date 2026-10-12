@@ -21,7 +21,10 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
-                "clangd",
+                "clangd", -- C/C++ language server (с встроенным clang-tidy)
+                "clang-format", -- C/C++ форматтер
+                "neocmakelsp", -- CMakeLists.txt language server (Rust, без python)
+                "pyright", -- python language server
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
                 "isort", -- python formatter
