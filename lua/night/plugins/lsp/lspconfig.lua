@@ -6,133 +6,82 @@ return {
         "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-        -- import lspconfig plugin
-        local lspconfig = require("lspconfig")
-
-        -- import mason_lspconfig plugin
-        local mason_lspconfig = require("mason-lspconfig")
-
-        local keymap = vim.keymap -- for conciseness
-
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev) end,
-        })
-
-        -- used to enable autocompletion (assign to every lsp server config)
         local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-        -- Change the Diagnostic symbols in the sign column (gutter)
-        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        mason_lspconfig.setup({
-            handlers = {
-                -- default handler for installed servers
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-                ["svelte"] = function()
-                    -- configure svelte server
-                    lspconfig["svelte"].setup({
-                        capabilities = capabilities,
-                        on_attach = function(client, bufnr)
-                            vim.api.nvim_create_autocmd("BufWritePost", {
-                                pattern = { "*.js", "*.ts" },
-                                callback = function(ctx)
-                                    -- Here use ctx.match instead of ctx.file
-                                    client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-                                end,
-                            })
-                        end,
-                    })
-                end,
+        vim.lsp.config("*", {
+            capabilities = capabilities,
+        })
 
-                ["graphql"] = function()
-                    -- configure graphql language server
-                    lspconfig["graphql"].setup({
-                        capabilities = capabilities,
-                        filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-                    })
-                end,
-                ["emmet_ls"] = function()
-                    -- configure emmet language server
-                    lspconfig["emmet_ls"].setup({
-                        capabilities = capabilities,
-                        filetypes = {
-                            "html",
-                            "typescriptreact",
-                            "javascriptreact",
-                            "css",
-                            "sass",
-                            "scss",
-                            "less",
-                            "svelte",
-                        },
-                    })
-                end,
-                ["lua_ls"] = function()
-                    -- configure lua server (with special settings)
-                    lspconfig["lua_ls"].setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                -- make the language server recognize "vim" global
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                            },
-                        },
-                    })
-                end,
+        vim.lsp.config("svelte", {
+            on_attach = function(client, bufnr)
+                vim.api.nvim_create_autocmd("BufWritePost", {
+                    pattern = { "*.js", "*.ts" },
+                    callback = function(ctx)
+                        client:notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+                    end,
+                })
+            end,
+        })
 
-                ["clangd"] = function()
-                    -- C/C++: для корректной работы нужен compile_commands.json.
-                    -- CMake генерирует его при конфигурации с
-                    -- -DCMAKE_EXPORT_COMPILE_COMMANDS=ON (или CMAKE_EXPORT_COMPILE_COMMANDS=ON).
-                    lspconfig["clangd"].setup({
-                        capabilities = capabilities,
-                        cmd = {
-                            "clangd",
-                            "--background-index", -- проектный индекс в фоне
-                            "--clang-tidy", -- clang-tidy диагностики прямо из clangd
-                            "--header-insertion=iwyu", -- автовставка include-what-you-use
-                            "--completion-style=detailed", -- полные подписи в автокомплите
-                        },
-                    })
-                end,
+        vim.lsp.config("graphql", {
+            filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+        })
 
-                ["neocmake"] = function()
-                    -- CMakeLists.txt (neocmakelsp): ищет build / cmake / .git как root
-                    lspconfig["neocmake"].setup({
-                        capabilities = capabilities,
-                    })
-                end,
+        vim.lsp.config("emmet_ls", {
+            filetypes = {
+                "html",
+                "typescriptreact",
+                "javascriptreact",
+                "css",
+                "sass",
+                "scss",
+                "less",
+                "svelte",
+            },
+        })
 
-                ["pyright"] = function()
-                    -- Python: venv подхватывается автоматически через venv-selector
-                    -- (встроенный хук перезапускает pyright и прописывает python.pythonPath)
-                    lspconfig["pyright"].setup({
-                        capabilities = capabilities,
-                        settings = {
-                            python = {
-                                analysis = {
-                                    typeCheckingMode = "basic",
-                                    autoSearchPaths = true, -- использовать пакеты из envs
-                                    useLibraryCodeForTypes = true,
-                                },
-                            },
-                        },
-                    })
-                end,
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    diagnostics = { globals = { "vim" } },
+                    completion = { callSnippet = "Replace" },
+                },
+            },
+        })
+
+        vim.lsp.config("clangd", {
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--header-insertion=iwyu",
+                "--completion-style=detailed",
+            },
+        })
+
+        vim.lsp.config("neocmake", {})
+
+        vim.lsp.config("pyright", {
+            settings = {
+                python = {
+                    analysis = {
+                        typeCheckingMode = "basic",
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                    },
+                },
+            },
+        })
+
+        require("mason-lspconfig").setup({
+            automatic_enable = {
+                exclude = { "stylua" },
             },
         })
     end,
