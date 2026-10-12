@@ -195,3 +195,8 @@ keymap.set("n", "<leader>vs", ":VenvSelect<cr>")
 keymap.set("n", "<leader>gg", ":LazyGit<CR>")
 
 keymap.set("n", "<leader>mm", ":Vellum<CR>")
+
+keymap.set("n", "<leader>Dd", ":Sqmeow toggle<cr>")
+keymap.set("n", "<leader>Dc", ":Sqmeow cancel<cr>")
+keymap.set("n", "<leader>Da", ":Sqmeow add<cr>")
+keymap.set("n", "<leader>Ds", ":Sqmeow scratch<cr>")
