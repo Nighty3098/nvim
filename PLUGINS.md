@@ -64,7 +64,7 @@
 
 ## Treesitter
 
-- **nvim-treesitter/nvim-treesitter** — парсеры Treesitter (подсветка, auto-tag)
+- **nvim-treesitter/nvim-treesitter** — парсеры и подсветка Treesitter (ветка main, подсветка включается через `vim.treesitter.start()`)
 - **nvim-treesitter/nvim-treesitter-textobjects** — текстовые объекты на основе Treesitter
 
 ## Git
