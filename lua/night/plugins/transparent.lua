@@ -1,5 +1,6 @@
 return {
     "xiyaowong/transparent.nvim",
+    event = "VeryLazy", -- применяет прозрачность после старта
     config = function()
         -- Optional, you don't have to run setup.
         require("transparent").setup({

@@ -1,3 +1,6 @@
+-- Bytecode-кэш Lua-модулей: в Neovim по умолчанию выключен, заметно ускоряет старт
+vim.loader.enable()
+
 require("night.core")
 require("night.lazy")
 

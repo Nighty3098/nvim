@@ -1,5 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope", -- грузим по :Telescope, а не на старте
     dependencies = {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
