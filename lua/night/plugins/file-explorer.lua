@@ -1,7 +1,7 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    cmd = "Neotree", -- грузим по :Neotree, а не на старте
+    cmd = "Neotree", -- load on :Neotree instead of at startup
     requires = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -10,10 +10,10 @@ return {
     },
     config = function()
         -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-        vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })   -- красный крест, ошибка
-        vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })    -- жёлтый треугольник, предупреждение
-        vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })    -- синий круг с буквой i, информация
-        vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })    -- голубая лампочка, подсказка
+        vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })   -- red cross, error
+        vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })    -- yellow triangle, warning
+        vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })    -- blue circle with i, info
+        vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })    -- light blue bulb, hint
 
         require("neo-tree").setup({
             close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

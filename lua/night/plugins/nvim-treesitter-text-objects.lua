@@ -1,21 +1,21 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  -- Маппинги задаются в config, поэтому плагин должен быть загружен
+  -- Mappings are defined in config, so the plugin must be loaded
   lazy = false,
   init = function()
-    -- Встроенный ftplugin Python объявляет ]m/[m/]M/[M/]]/[[ и перебивает наши
-    -- textobjects. Отключаем только его (не глобальный no_plugin_maps).
+    -- The built-in Python ftplugin defines ]m/[m/]M/[M/]]/[[ and overrides our
+    -- textobjects. Disable only it (not the global no_plugin_maps).
     vim.g.no_python_maps = true
   end,
   config = function()
     require("nvim-treesitter-textobjects").setup({
       select = {
-        -- Автоматически прыгать вперёд к textobj, как в targets.vim
+        -- Automatically jump forward to the textobj, like targets.vim
         lookahead = true,
       },
       move = {
-        set_jumps = true, -- писать прыжки в jumplist
+        set_jumps = true, -- record jumps in the jumplist
       },
     })
 
@@ -24,7 +24,7 @@ return {
     local swap = require("nvim-treesitter-textobjects.swap")
     local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
-    -- Выбор textobjects (x = visual, o = operator-pending)
+    -- Select textobjects (x = visual, o = operator-pending)
     local function select_textobj(lhs, query, desc)
       vim.keymap.set({ "x", "o" }, lhs, function()
         select.select_textobject(query, "textobjects")
@@ -36,7 +36,7 @@ return {
     select_textobj("l=", "@assignment.lhs", "Select left hand side of an assignment")
     select_textobj("r=", "@assignment.rhs", "Select right hand side of an assignment")
 
-    -- Работает для js/ts (capture @property.* из textobjects.scm)
+    -- Works for js/ts (capture @property.* from textobjects.scm)
     select_textobj("a:", "@property.outer", "Select outer part of an object property")
     select_textobj("i:", "@property.inner", "Select inner part of an object property")
     select_textobj("l:", "@property.lhs", "Select left part of an object property")
@@ -60,7 +60,7 @@ return {
     select_textobj("ac", "@class.outer", "Select outer part of a class")
     select_textobj("ic", "@class.inner", "Select inner part of a class")
 
-    -- Обмен (swap) узлов
+    -- Swap nodes
     local function swap_textobj(lhs, fn, query, desc)
       vim.keymap.set("n", lhs, function()
         fn(query)
@@ -75,7 +75,7 @@ return {
     swap_textobj("<leader>p:", swap.swap_previous, "@property.outer", "Swap object property with prev")
     swap_textobj("<leader>pm", swap.swap_previous, "@function.outer", "Swap function with previous")
 
-    -- Перемещение (move) между textobjects
+    -- Move between textobjects
     local function move_textobj(lhs, fn, query, desc, group)
       vim.keymap.set({ "n", "x", "o" }, lhs, function()
         fn(query, group or "textobjects")
@@ -87,7 +87,7 @@ return {
     move_textobj("]c", move.goto_next_start, "@class.outer", "Next class start")
     move_textobj("]i", move.goto_next_start, "@conditional.outer", "Next conditional start")
     move_textobj("]l", move.goto_next_start, "@loop.outer", "Next loop start")
-    -- query_group: файл queries/<lang>/<group>.scm из runtimepath
+    -- query_group: queries/<lang>/<group>.scm file from runtimepath
     move_textobj("]s", move.goto_next_start, "@local.scope", "Next scope", "locals")
     move_textobj("]z", move.goto_next_start, "@fold", "Next fold", "folds")
 
@@ -109,11 +109,11 @@ return {
     move_textobj("[I", move.goto_previous_end, "@conditional.outer", "Prev conditional end")
     move_textobj("[L", move.goto_previous_end, "@loop.outer", "Prev loop end")
 
-    -- vim way: ; двигается в ту же сторону, что и последнее движение
+    -- vim way: ; moves in the same direction as the last move
     vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
     vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
-    -- f/F/t/T тоже повторяются через ; и ,
+    -- f/F/t/T are also repeated via ; and ,
     vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })

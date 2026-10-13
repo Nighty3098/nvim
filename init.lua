@@ -1,4 +1,4 @@
--- Bytecode-кэш Lua-модулей: в Neovim по умолчанию выключен, заметно ускоряет старт
+-- Lua module bytecode cache: off by default in Neovim, noticeably speeds up startup
 vim.loader.enable()
 
 require("night.core")

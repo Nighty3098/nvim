@@ -1,34 +1,34 @@
 return {
     "mg979/vim-visual-multi",
     branch = "master",
-    event = "VeryLazy", -- init() всё равно выполнится на старте (VM_maps успеют)
+    event = "VeryLazy", -- init() still runs at startup (so VM_maps are set in time)
     init = function()
-        -- Глобальные настройки VM должны быть выставлены ДО загрузки плагина,
-        -- т.к. постоянные маппинги строятся при его старте — поэтому в init().
+        -- VM globals must be set BEFORE the plugin loads,
+        -- because its permanent mappings are built at startup — hence init().
         --
-        -- VSCode-подобный Ctrl+D: первое нажатие выделяет слово под курсором,
-        -- следующие — добавляют следующие вхождения по файлу.
+        -- VS Code-like Ctrl+D: the first press selects the word under the cursor,
+        -- subsequent ones add the next occurrences in the file.
         vim.g.VM_maps = {
-            ["Find Under"] = "<C-d>", -- normal: слово под курсором
-            ["Find Subword Under"] = "<C-d>", -- visual: берёт выделение, ищет следующее
-            ["Select All"] = "<C-S-l>", -- все вхождения слова под курсором
-            ["Visual All"] = "<C-S-l>", -- все вхождения выделенного текста
-            -- Мультикурсор мышкой: Alt+ЛКМ — добавить курсор, Alt+ПКМ — слово
+            ["Find Under"] = "<C-d>", -- normal: word under cursor
+            ["Find Subword Under"] = "<C-d>", -- visual: takes the selection, finds the next one
+            ["Select All"] = "<C-S-l>", -- all occurrences of the word under cursor
+            ["Visual All"] = "<C-S-l>", -- all occurrences of the selected text
+            -- Mouse multicursor: Alt+LMB adds a cursor, Alt+RMB selects a word
             ["Mouse Cursor"] = "<M-LeftMouse>",
             ["Mouse Word"] = "<M-RightMouse>",
         }
-        vim.g.VM_mouse_mappings = 1 -- включить мышиные маппинги VM
+        vim.g.VM_mouse_mappings = 1 -- enable VM mouse mappings
     end,
     config = function()
-        local keymap = vim.keymap -- как в core/keymaps.lua
+        local keymap = vim.keymap -- same as core/keymaps.lua
         local opts = { noremap = true, silent = true }
 
-        -- Надёжные фолбэки: работают везде, даже там, где Ctrl+Shift не доходит
-        -- (внутри tmux терминал не отличает <C-S-l> от <C-l>).
+        -- Reliable fallbacks: work everywhere, even where Ctrl+Shift does not arrive
+        -- (inside tmux the terminal cannot tell <C-S-l> from <C-l>).
         keymap.set("n", "<leader>sa", "<Plug>(VM-Select-All)", opts)
         keymap.set("x", "<leader>sa", "<Plug>(VM-Visual-All)", opts)
 
-        -- Отдельно выделить слово под курсором (без мультикурсора)
+        -- Select just the word under the cursor (no multicursor)
         keymap.set("n", "<leader>w", "viw", opts)
     end,
 }

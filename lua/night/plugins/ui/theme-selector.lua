@@ -1,6 +1,6 @@
 return {
     "zaldih/themery.nvim",
-    cmd = "Themery", -- грузим по :Themery, а не на старте
+    cmd = "Themery", -- load on :Themery instead of at startup
     config = function()
         require("themery").setup({
             themes = {

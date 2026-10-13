@@ -1,9 +1,9 @@
 return {
     "saghen/blink.cmp",
-    branch = "v1", -- стабильный V1 (в V2 активно ломают API)
+    branch = "v1", -- stable V1 (V2 keeps breaking the API)
     event = "InsertEnter",
     dependencies = {
-        -- blink сам грузит friendly-snippets через встроенный snippet-источник
+        -- blink loads friendly-snippets itself via the built-in snippets source
         "rafamadriz/friendly-snippets",
     },
     opts = {
@@ -11,11 +11,11 @@ return {
             default = { "lsp", "path", "snippets", "buffer" },
         },
         snippets = {
-            preset = "default", -- vim.snippet; friendly-snippets подхватывается автоматически
+            preset = "default", -- vim.snippet; friendly-snippets is picked up automatically
         },
         completion = {
             list = {
-                -- как было с nvim-cmp: ничего не выбирать/вставлять автоматически
+                -- as with nvim-cmp: do not auto-select/auto-insert anything
                 selection = { preselect = false, auto_insert = false },
                 cycle = { from_bottom = true, from_top = true },
             },
@@ -51,7 +51,7 @@ return {
         },
     },
     config = function(_, opts)
-        -- цвета меню автодополнения под текущую тему (аналог старого CmpPmenu)
+        -- completion menu colors matching the current theme (like the old CmpPmenu)
         local function set_colors()
             local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
             local normal = vim.api.nvim_get_hl(0, { name = "Normal" })

@@ -1,4 +1,4 @@
--- Парсеры: C/C++, CMake, Python, JS/TS + то, что нужно самому конфигу и разметке
+-- Parsers: C/C++, CMake, Python, JS/TS plus what the config and markup need
 local parsers = {
   "c",
   "cpp",
@@ -21,19 +21,19 @@ local parsers = {
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  -- Новый API (ветка main): плагин НЕ поддерживает ленивую загрузку
+  -- New API (main branch): the plugin does NOT support lazy-loading
   lazy = false,
   config = function()
     require("nvim-treesitter").setup({})
 
-    -- Доустанавливает отсутствующие парсеры (асинхронно; no-op для уже стоящих)
+    -- Installs missing parsers (async; no-op for already installed ones)
     require("nvim-treesitter").install(parsers)
 
-    -- Подсветку теперь обеспечивает сам Neovim — её нужно включить вручную
+    -- Highlighting is now provided by Neovim itself and must be enabled manually
     vim.api.nvim_create_autocmd("FileType", {
-      desc = "Включить treesitter-подсветку для текущего buffer",
+      desc = "Enable treesitter highlighting for the current buffer",
       callback = function(ev)
-        -- pcall: для языков без парсера просто остаёмся на regexp-подсветке
+        -- pcall: for languages without a parser just fall back to regexp highlighting
         pcall(vim.treesitter.start, ev.buf)
       end,
     })

@@ -1,80 +1,80 @@
 # Neovim Plugins
 
-> Список используемых плагинов (кроме тем оформления).
+> List of plugins in use (excluding color themes).
 
 ## Plugin Manager
 
-- **folke/lazy.nvim** — менеджер плагинов с ленивой загрузкой
+- **folke/lazy.nvim** — plugin manager with lazy loading
 
-## Зависимости / Утилиты
+## Dependencies / Utilities
 
-- **nvim-lua/plenary.nvim** — набор Lua-функций, используемый многими плагинами
-- **MunifTanjim/nui.nvim** — библиотека UI-компонентов
-- **nvim-tree/nvim-web-devicons** — иконки типов файлов
+- **nvim-lua/plenary.nvim** — collection of Lua functions used by many plugins
+- **MunifTanjim/nui.nvim** — UI component library
+- **nvim-tree/nvim-web-devicons** — file type icons
 
-## Улучшения интерфейса
+## UI Enhancements
 
-- **folke/noice.nvim** — улучшенный cmdline, сообщения и всплывающие меню
-- **folke/which-key.nvim** — подсказки доступных клавиш
-- **hoob3rt/lualine.nvim** — кастомная строка статуса
-- **goolord/alpha-nvim** — приветственный экран (dashboard)
-- **folke/zen-mode.nvim** — режим без отвлечений (distraction-free)
-- **zaldih/themery.nvim** — переключатель тем (UI для выбора цветовой схемы)
-- **rachartier/tiny-inline-diagnostic.nvim** — инлайн-диагностика (сообщения об ошибках в тексте)
-- **xiyaowong/transparent.nvim** — прозрачный фон для различных highlight-групп
+- **folke/noice.nvim** — improved cmdline, messages and popups
+- **folke/which-key.nvim** — hints for available keys
+- **hoob3rt/lualine.nvim** — custom statusline
+- **goolord/alpha-nvim** — welcome screen (dashboard)
+- **folke/zen-mode.nvim** — distraction-free mode
+- **zaldih/themery.nvim** — theme switcher (UI for choosing a color scheme)
+- **rachartier/tiny-inline-diagnostic.nvim** — inline diagnostics (error messages in the text)
+- **xiyaowong/transparent.nvim** — transparent background for various highlight groups
 
-## Редактирование
+## Editing
 
-- **mg979/vim-visual-multi** — множественные курсоры (multi-cursor)
-- **kylechui/nvim-surround** — добавление/изменение/удаление окружения (скобки, кавычки и т.д.)
-- **numToStr/Comment.nvim** — комментирование кода через motions
-- **JoosepAlviste/nvim-ts-context-commentstring** — контекстно-зависимые строки комментариев (для Comment.nvim)
-- **windwp/nvim-autopairs** — автоматическое закрытие скобок и кавычек
-- **lukas-reineke/indent-blankline.nvim** — направляющие отступов (indent guides)
-- **echasnovski/mini.bracketed** — навигация по скобкам (файлы, окна, quickfix, yank, treesitter)
+- **mg979/vim-visual-multi** — multiple cursors (multi-cursor)
+- **kylechui/nvim-surround** — add/change/delete surroundings (brackets, quotes, etc.)
+- **numToStr/Comment.nvim** — comment code via motions
+- **JoosepAlviste/nvim-ts-context-commentstring** — context-aware comment strings (for Comment.nvim)
+- **windwp/nvim-autopairs** — automatic closing of brackets and quotes
+- **lukas-reineke/indent-blankline.nvim** — indent guides
+- **echasnovski/mini.bracketed** — navigation by brackets (files, windows, quickfix, yank, treesitter)
 
-## Файловый менеджер
+## File Manager
 
-- **nvim-neo-tree/neo-tree.nvim** — файловый менеджер (tree, buffers, git status)
+- **nvim-neo-tree/neo-tree.nvim** — file manager (tree, buffers, git status)
 
-## Поиск / Fuzzy Finder
+## Search / Fuzzy Finder
 
-- **nvim-telescope/telescope.nvim** — расширяемый fuzzy finder
-- **nvim-telescope/telescope-fzf-native.nvim** — нативный fzf-сортировщик для telescope
+- **nvim-telescope/telescope.nvim** — extensible fuzzy finder
+- **nvim-telescope/telescope-fzf-native.nvim** — native fzf sorter for telescope
 
-## Автодополнение (blink.cmp)
+## Completion (blink.cmp)
 
-- **saghen/blink.cmp** — движок автодополнения (LSP, path, snippets, buffer)
-- **rafamadriz/friendly-snippets** — коллекция готовых сниппетов (грузятся самим blink.cmp)
-- **brenoprata10/nvim-highlight-colors** — подсветка цветовых кодов в буфере
+- **saghen/blink.cmp** — completion engine (LSP, path, snippets, buffer)
+- **rafamadriz/friendly-snippets** — collection of ready-made snippets (loaded by blink.cmp itself)
+- **brenoprata10/nvim-highlight-colors** — highlight color codes in the buffer
 
 ## LSP
 
-- **neovim/nvim-lspconfig** — конфигурация LSP-клиента
-- **williamboman/mason.nvim** — установщик LSP/линтеров/форматтеров
-- **williamboman/mason-lspconfig.nvim** — мост между mason и lspconfig
-- **WhoIsSethDaniel/mason-tool-installer.nvim** — гарантированная установка инструментов через mason
-- **antosha417/nvim-lsp-file-operations** — LSP-операции с файлами (rename, create, delete)
-- **folke/lazydev.nvim** — подсказки и автодополнение для настроек Neovim (типы Lua, lazy.nvim)
+- **neovim/nvim-lspconfig** — LSP client configuration
+- **williamboman/mason.nvim** — LSP/linter/formatter installer
+- **williamboman/mason-lspconfig.nvim** — bridge between mason and lspconfig
+- **WhoIsSethDaniel/mason-tool-installer.nvim** — guaranteed tool installation via mason
+- **antosha417/nvim-lsp-file-operations** — LSP file operations (rename, create, delete)
+- **folke/lazydev.nvim** — hints and completion for Neovim config (Lua types, lazy.nvim)
 
-## Форматирование и линтинг
+## Formatting and Linting
 
-- **stevearc/conform.nvim** — форматтер кода
-- **mfussenegger/nvim-lint** — асинхронный линтер
+- **stevearc/conform.nvim** — code formatter
+- **mfussenegger/nvim-lint** — asynchronous linter
 
 ## Treesitter
 
-- **nvim-treesitter/nvim-treesitter** — парсеры и подсветка Treesitter (ветка main, подсветка включается через `vim.treesitter.start()`)
-- **nvim-treesitter/nvim-treesitter-textobjects** — текстовые объекты на основе Treesitter
+- **nvim-treesitter/nvim-treesitter** — Treesitter parsers and highlighting (main branch, highlighting enabled via `vim.treesitter.start()`)
+- **nvim-treesitter/nvim-treesitter-textobjects** — Treesitter-based text objects
 
 ## Git
 
-- **lewis6991/gitsigns.nvim** — git-символы в gutter (добавлено, изменено, удалено)
-- **kdheepak/lazygit.nvim** — открытие lazygit из nvim (требует установленный lazygit)
+- **lewis6991/gitsigns.nvim** — git signs in the gutter (added, changed, deleted)
+- **kdheepak/lazygit.nvim** — open lazygit from nvim (requires lazygit installed)
 
-## Заметки / Markdown / Python
+## Notes / Markdown / Python
 
-- **obsidian-nvim/obsidian.nvim** — работа с хранилищем Obsidian
-- **blackhat-7/vellum.nvim** — быстрый рендеринг Markdown (включён для ft=markdown)
-- **2giosangmitom/sqmeow.nvim** — заметки и персональный WIP-плагин (`<leader>D*`)
-- **linux-cultist/venv-selector.nvim** — выбор Python-виртуального окружения
+- **obsidian-nvim/obsidian.nvim** — work with an Obsidian vault
+- **blackhat-7/vellum.nvim** — fast Markdown rendering (enabled for ft=markdown)
+- **2giosangmitom/sqmeow.nvim** — notes and personal WIP plugin (`<leader>D*`)
+- **linux-cultist/venv-selector.nvim** — select a Python virtual environment

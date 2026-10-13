@@ -1,7 +1,7 @@
 return {
     "obsidian-nvim/obsidian.nvim",
     version = "*",
-    ft = "markdown", -- грузим только для markdown, а не на старте
+    ft = "markdown", -- load only for markdown instead of at startup
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",

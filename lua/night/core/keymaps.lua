@@ -1,43 +1,43 @@
 -- set leader key to space
 vim.g.mapleader = " "
 
-local keymap = vim.keymap -- для краткости
+local keymap = vim.keymap -- for brevity
 local opts = { noremap = true, silent = true }
 
 ---------------------
--- Общие сопоставления
+-- General mappings
 ---------------------
 
--- выход из режима вставки по jk
+-- leave insert mode with jk
 keymap.set("i", "jk", "<ESC>", opts)
 
--- очистка подсветки поиска
+-- clear search highlight
 keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 
--- удалить символ без копирования в регистр
+-- delete char without yanking to register
 keymap.set("n", "x", '"_x', opts)
 
--- инкремент/декремент чисел
+-- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", opts)
 keymap.set("n", "<leader>-", "<C-x>", opts)
 
--- управление окнами
-keymap.set("n", "<leader>sv", "<C-w>v", opts) -- вертикальное разделение
-keymap.set("n", "<leader>sh", "<C-w>s", opts) -- горизонтальное разделение
-keymap.set("n", "<leader>se", "<C-w>=", opts) -- выравнивание окон
-keymap.set("n", "<leader>cs", ":close<CR>", opts) -- закрыть окно
+-- window management
+keymap.set("n", "<leader>sv", "<C-w>v", opts) -- vertical split
+keymap.set("n", "<leader>sh", "<C-w>s", opts) -- horizontal split
+keymap.set("n", "<leader>se", "<C-w>=", opts) -- equalize windows
+keymap.set("n", "<leader>cs", ":close<CR>", opts) -- close window
 
--- Alt+стрелки — переход между окнами (NeoTree, сплиты, код и т.д.)
--- Через wincmd, а не <C-w>: у тебя <C-w> перемаплен ниже, а tmux шлёт
--- сырые esc-последовательности вместо <M-Left>, поэтому мапим и их.
+-- Alt+arrows: move between windows (NeoTree, splits, code, etc.)
+-- Uses wincmd instead of <C-w>: <C-w> is remapped below, and tmux sends
+-- raw escape sequences instead of <M-Left>, so we map those too.
 local function win_move(dir)
     return function()
         vim.cmd("wincmd " .. dir)
     end
 end
 local win_keys = {
-    -- h/l: "Left/Right" для обычных терминалов + "b/f", потому что
-    -- kitty.conf (строки 86-87) шлёт Alt+Left/Right как ESC b / ESC f
+    -- h/l: "Left/Right" for regular terminals plus "b/f", because
+    -- kitty.conf (lines 86-87) sends Alt+Left/Right as ESC b / ESC f
     h = { "Left", "b", "<Esc>[1;3D" },
     l = { "Right", "f", "<Esc>[1;3C" },
     k = { "Up", "<Esc>[1;3A" },
@@ -50,7 +50,7 @@ for dir, keys in pairs(win_keys) do
         keymap.set("i", lhs, "<Esc><Cmd>wincmd " .. dir .. "<CR>", opts)
         keymap.set("v", lhs, "<Esc><Cmd>wincmd " .. dir .. "<CR>", opts)
         keymap.set("t", lhs, "<C-\\><C-n><Cmd>wincmd " .. dir .. "<CR>", opts)
-        -- дубликат через <A-...> (синоним <M-...>, на случай другого terminfo)
+        -- duplicate via <A-...> (alias of <M-...>, in case of different terminfo)
         if not k:match("^<Esc>") then
             keymap.set("n", "<A-" .. k .. ">", win_move(dir), opts)
             keymap.set("i", "<A-" .. k .. ">", "<Esc><Cmd>wincmd " .. dir .. "<CR>", opts)
@@ -60,22 +60,22 @@ for dir, keys in pairs(win_keys) do
     end
 end
 
--- вкладки
-keymap.set("n", "<leader>nt", ":tabnew<CR>", opts) -- новая вкладка
--- закрыть текущий буфер (раньше был плагин bufdelete; теперь встроенный :bdelete)
+-- tabs
+keymap.set("n", "<leader>nt", ":tabnew<CR>", opts) -- new tab
+-- close current buffer (used to be the bufdelete plugin; now built-in :bdelete)
 keymap.set("n", "<C-q>", function()
     if vim.api.nvim_buf_get_option(0, "modified") then
-        local answer = vim.fn.confirm("Буфер изменён. Всё равно закрыть?", "&Да\n&Нет")
+        local answer = vim.fn.confirm("Buffer modified. Close anyway?", "&Yes\n&No")
         if answer ~= 1 then
             return
         end
     end
     vim.cmd("bdelete")
 end, opts)
-keymap.set("n", "<leader>tn", ":tabn<CR>", opts) -- следующая вкладка
-keymap.set("n", "<leader>tp", ":tabp<CR>", opts) -- предыдущая вкладка
+keymap.set("n", "<leader>tn", ":tabn<CR>", opts) -- next tab
+keymap.set("n", "<leader>tp", ":tabp<CR>", opts) -- previous tab
 
--- Alt+1..9 — перейти к i-му буферу из списка (раньше был bufferline.nvim)
+-- Alt+1..9: jump to the i-th listed buffer (used to be bufferline.nvim)
 local listed_buffers = function()
     local bufs = vim.tbl_filter(function(b)
         return vim.fn.buflisted(b) == 1
@@ -89,11 +89,11 @@ for i = 1, 9 do
         if bufs[i] then
             vim.api.nvim_win_set_buf(0, bufs[i])
         end
-    end, { desc = "Буфер " .. i, noremap = true, silent = true })
+    end, { desc = "Buffer " .. i, noremap = true, silent = true })
 end
 
 ----------------------
--- Плагины и LSP
+-- Plugins and LSP
 ----------------------
 
 keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
@@ -113,28 +113,28 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 -- zen mode
 keymap.set("n", "<leader>zm", ":ZenMode<CR>", opts)
 
--- максимизировать/восстановить окно (раньше был плагин vim-maximizer)
+-- maximize/restore window (used to be the vim-maximizer plugin)
 local maximized = false
 keymap.set("n", "<leader>mt", function()
     maximized = not maximized
     if maximized then
-        vim.cmd("wincmd _") -- на всю высоту
-        vim.cmd("wincmd |") -- на всю ширину
+        vim.cmd("wincmd _") -- full height
+        vim.cmd("wincmd |") -- full width
     else
-        vim.cmd("wincmd =") -- снова равные размеры
+        vim.cmd("wincmd =") -- equal sizes again
     end
 end, opts)
 
--- NeoTree (файловый проводник)
+-- NeoTree (file explorer)
 keymap.set("n", "<leader>e", ":Neotree left<CR>", opts)
 keymap.set("n", "<leader>ef", ":Neotree float<CR>", opts)
 keymap.set("n", "<leader>ec", ":Neotree close<CR>", opts)
 keymap.set("n", "<leader>ee", ":Neotree float git_status git_base=main<CR>", opts)
 
--- символы файла через Telescope (раньше был плагин tagbar)
+-- file symbols via Telescope (used to be the tagbar plugin)
 keymap.set("n", "<leader>t", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 
--- терминал
+-- terminal
 keymap.set("n", "<leader>ot", ":terminal<CR>", opts)
 
 -- telescope
@@ -144,13 +144,13 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", opts)
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 
--- git через telescope
+-- git via telescope
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", opts)
 keymap.set("n", "<leader>gbc", "<cmd>Telescope git_bcommits<CR>", opts)
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opts)
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>", opts)
 
--- сессии (встроенный :mksession; раньше был плагин auto-session)
+-- sessions (built-in :mksession; used to be the auto-session plugin)
 local session_dir = vim.fn.stdpath("state") .. "/sessions"
 vim.fn.mkdir(session_dir, "p")
 local function session_file()
@@ -167,29 +167,29 @@ keymap.set("n", "<leader>ws", function()
     vim.cmd("mksession! " .. vim.fn.fnameescape(session_file()))
 end, { desc = "Save session for cwd", noremap = true, silent = true })
 
--- темы
+-- themes
 keymap.set("n", "<leader>cc", ":Themery<CR>", opts)
 
--- удаление строки (dd)
+-- delete line (dd)
 keymap.set("n", "<leader>dd", "dd", opts)
 
 ---------------------
--- VS Code-подобные сочетания
+-- VS Code-like combos
 ---------------------
 
--- Ctrl+w — поиск символа вперед (как w)
+-- Ctrl+w: move forward by word (like w)
 keymap.set("n", "<C-w>", function()
     vim.api.nvim_feedkeys("w", "n", false)
 end, opts)
 
--- Ctrl+b — перейти назад по словам (как b)
+-- Ctrl+b: move backward by word (like b)
 keymap.set("n", "<C-b>", function()
     vim.api.nvim_feedkeys("b", "n", false)
 end, opts)
 
--- Ctrl+стрелки влево/вправо — перемещение по словам (как в VS Code/браузере)
--- Kitty/tmux могут слать сырые esc-последовательности вместо <C-Left>/<C-Right>,
--- поэтому мапим и их (по аналогии с Alt+стрелками выше).
+-- Ctrl+Left/Right: move by words (like in VS Code/browsers)
+-- Kitty/tmux may send raw escape sequences instead of <C-Left>/<C-Right>,
+-- so we map those too (same as Alt+arrows above).
 local word_motion = {
     { "<C-Left>", "<Esc>[1;5D", "b" },
     { "<C-Right>", "<Esc>[1;5C", "w" },
@@ -201,26 +201,26 @@ for _, m in ipairs(word_motion) do
     end
 end
 
--- Home — начало строки
+-- Home: start of line
 keymap.set("n", "<Home>", "0", opts)
 keymap.set("i", "<Home>", "<C-o>0", opts)
 
--- End — конец строки
+-- End: end of line
 keymap.set("n", "<End>", "$", opts)
 keymap.set("i", "<End>", "<C-o>$", opts)
 
--- Ctrl+a — выделить всё (как Ctrl+A в VS Code)
+-- Ctrl+a: select all (like Ctrl+A in VS Code)
 keymap.set("n", "<C-a>", "ggVG", opts)
 keymap.set("i", "<C-a>", "<ESC>ggVG", opts)
 
--- Копирование и вставка с системного буфера (clipboard)
-keymap.set("v", "<C-c>", '"+y', opts) -- копировать в visual режиме
-keymap.set("n", "<C-c>", '"+yy', opts) -- копировать текущую строку
-keymap.set("n", "<C-v>", '"+p', opts) -- вставить после курсора
-keymap.set("i", "<C-v>", "<C-r>+", opts) -- вставить в режиме вставки
-keymap.set("v", "<C-v>", '"+p', opts) -- вставить в visual режиме
+-- Copy/paste using the system clipboard
+keymap.set("v", "<C-c>", '"+y', opts) -- copy in visual mode
+keymap.set("n", "<C-c>", '"+yy', opts) -- copy current line
+keymap.set("n", "<C-v>", '"+p', opts) -- paste after cursor
+keymap.set("i", "<C-v>", "<C-r>+", opts) -- paste in insert mode
+keymap.set("v", "<C-v>", '"+p', opts) -- paste in visual mode
 
--- Диагностика
+-- Diagnostics
 keymap.set(
     "n",
     "<leader>ch",

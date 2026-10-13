@@ -1,6 +1,6 @@
 return {
     "folke/zen-mode.nvim",
-    cmd = "ZenMode", -- грузим по :ZenMode, а не на старте
+    cmd = "ZenMode", -- load on :ZenMode instead of at startup
     opts = {
         window = {
             backdrop = 0.65, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
