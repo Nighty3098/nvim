@@ -31,7 +31,7 @@ return {
                 win_options = {
                     winhighlight = {
                         Normal = "NoiceBg",
-                        FloatBorder = "NoiceBg"
+                        FloatBorder = "NoiceBg",
                     },
                 },
             },

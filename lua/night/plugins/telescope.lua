@@ -18,21 +18,21 @@ return {
             local accent = "#81a1c1"
 
             local hl_groups = {
-                TelescopeNormal        = { bg = bg_color, fg = text_fg },
-                TelescopeBorder        = { bg = bg_color, fg = bg_color },
+                TelescopeNormal = { bg = bg_color, fg = text_fg },
+                TelescopeBorder = { bg = bg_color, fg = bg_color },
                 TelescopeResultsNormal = { bg = bg_color, fg = text_fg },
                 TelescopeResultsBorder = { bg = bg_color, fg = bg_color },
-                TelescopeResultsTitle  = { bg = bg_color, fg = bg_color },
-                TelescopePromptNormal  = { bg = bg_color, fg = text_fg },
-                TelescopePromptBorder  = { bg = bg_color, fg = bg_color },
-                TelescopePromptTitle   = { bg = bg_color, fg = bg_color },
-                TelescopePromptPrefix  = { fg = accent, bg = bg_color },
+                TelescopeResultsTitle = { bg = bg_color, fg = bg_color },
+                TelescopePromptNormal = { bg = bg_color, fg = text_fg },
+                TelescopePromptBorder = { bg = bg_color, fg = bg_color },
+                TelescopePromptTitle = { bg = bg_color, fg = bg_color },
+                TelescopePromptPrefix = { fg = accent, bg = bg_color },
                 TelescopePreviewNormal = { bg = bg_color },
                 TelescopePreviewBorder = { bg = bg_color, fg = bg_color },
-                TelescopePreviewTitle  = { bg = bg_color, fg = bg_color },
-                TelescopeSelection      = { bg = "#4c566a", fg = "#ffffff", bold = true },
+                TelescopePreviewTitle = { bg = bg_color, fg = bg_color },
+                TelescopeSelection = { bg = "#4c566a", fg = "#ffffff", bold = true },
                 TelescopeSelectionCaret = { bg = "#4c566a", fg = accent },
-                TelescopeMatching       = { fg = accent, bold = true },
+                TelescopeMatching = { fg = accent, bold = true },
             }
 
             for group, settings in pairs(hl_groups) do
@@ -50,7 +50,7 @@ return {
             defaults = {
                 preview = { treesitter = true },
                 borderchars = {
-                    prompt  = { " ", " ", " ", " ", " ", " ", " ", " " },
+                    prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
                     results = { " ", " ", " ", " ", " ", " ", " ", " " },
                     preview = { " ", " ", " ", " ", " ", " ", " ", " " },
                 },
